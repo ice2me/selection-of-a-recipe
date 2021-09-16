@@ -1,0 +1,85 @@
+.add-recipe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 30px 0;
+  background-image: linear-gradient(to top right, #030303, #131505, #222808, #323a0a, #424c0c, #515e0f, #617111, #708314, #809516, #90a718, #9fba1b, #afcc1d);
+  z-index: 10;
+}
+.add-recipe form {
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 22px;
+  padding: 0 20px;
+  font-family: monospace;
+  overflow: auto;
+}
+.add-recipe form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  font-family: monospace;
+}
+.add-recipe form input, .add-recipe form textarea {
+  min-width: 250px;
+  margin-top: 10px;
+}
+.add-recipe form input::placeholder, .add-recipe form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.add-recipe h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.textareaName {
+  width: 100%;
+  height: 150px;
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+.textareaName:active, .textareaName:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+@media screen and (max-width: 380px) {
+  .textareaName {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+.closeButtonModal {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.blockInp {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+/*# sourceMappingURL=AddResipe.css.map */
