@@ -8,7 +8,8 @@
 		"client": "npm run start --prefix client",
 		"client:install": "npm install --prefix client",
 		"client:build": "npm run build --prefix client",
-		"dev": "cross-env NODE_ENV=dev concurrently \"npm run server\" \"npm run client\""
+		"dev": "cross-env NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
 	},
 	"keywords": [],
 	"author": "",
@@ -30,16 +31,19 @@
 		"react-file-base64": "^1.0.3",
 		"react-image-file-resizer": "^0.4.7"
 	},
+	"engines": {
+		"node": "14.17.5"
+	},
 	"devDependencies": {
 		"cors": "^2.8.5"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ice2me/Show-recipes.git"
+		"url": "git+https://github.com/ice2me/selection-of-a-recipe.git"
 	},
 	"bugs": {
-		"url": "https://github.com/ice2me/Show-recipes/issues"
+		"url": "https://github.com/ice2me/selection-of-a-recipe/issues"
 	},
-	"homepage": "https://github.com/ice2me/Show-recipes#readme",
+	"homepage": "https://github.com/ice2me/selection-of-a-recipe#readme",
 	"description": ""
 }
