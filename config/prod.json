@@ -1,0 +1,6 @@
+{
+	"port": "5000",
+	"jwtSecret": "perfect dish!",
+	"mongoUri": "mongodb+srv://recipes:123asdQWE!%40%23@recipes.mxat6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+	"baseUrl": "https://selection-recipe.herokuapp.com/"
+}
