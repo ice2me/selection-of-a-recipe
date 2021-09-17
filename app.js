@@ -25,6 +25,7 @@ const PORT = config.get("port") || 5000;
 // const PORT = Process.env.PORT || 5000
 
 async function start() {
+	console.log(`Server started on port: ${PORT}...***********************`)
 	try {
 		await mongoose.connect(config.get("mongoUri"), {
 			useNewUrlParser: true,
