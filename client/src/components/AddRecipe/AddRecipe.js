@@ -57,12 +57,11 @@ function AddRecipe({closeAddRecipeModal}) {
 		}
 		try {
 			// await axios.post('http://localhost:5000/api/recipe/dish', payload);
-			await axios.post('https://main--competent-jennings-ab1095.netlify.app/api/recipe/dish', payload);
+			await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
 		} catch (e) {
 			console.error(e.message)
 		}
 		closeAddRecipeModal()
-
 	}
 
 //Todo value inputs ---------------------------------------
