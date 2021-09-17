@@ -56,8 +56,8 @@ function AddRecipe({closeAddRecipeModal}) {
 			recipe: description
 		}
 		try {
-			// await axios.post('http://localhost:5000/api/recipe/dish', payload);
-			await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
+			await axios.post('http://localhost:5000/api/recipe/dish', payload);
+			// await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
 		} catch (e) {
 			console.error(e.message)
 		}
