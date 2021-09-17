@@ -2,9 +2,10 @@ import {useCallback, useEffect, useState, useRef} from 'react';
 import {Button, InputGroup} from 'react-bootstrap';
 import ShowFullVariant from "./ShowFullVariant";
 import ShowPartlyVariant from "./ShowPartlyVariant";
+import Tags from './Tags'
 import AddRecipe from "./AddRecipe/AddRecipe";
 import axios from "axios";
-import ReactTags from 'react-tag-autocomplete'
+
 
 function InputEnter() {
 	const [inputValue, setInputValue] = useState([]);
@@ -14,19 +15,6 @@ function InputEnter() {
 	const [dishPartly, setDishPartly] = useState([]);
 	const [products, setProducts] = useState([])
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
-
-
-	const [tags, setTags] = useState([
-		{ id: 1, name: "Apples" },
-		{ id: 2, name: "Pears" }
-	])
-	const [suggestions, setSuggestions] = useState([
-		{ id: 3, name: "Bananas" },
-		{ id: 4, name: "Mangos" },
-		{ id: 5, name: "Lemons" },
-		{ id: 6, name: "Apricots" }
-	])
-	const reactTags = useRef()
 
 
 	const fetchRecipes = useCallback(async () => {
@@ -74,20 +62,6 @@ function InputEnter() {
 		setDishPartly(partialObjList);
 
 	};
-//Todo dataList-------------------------------------------------
-
-	const onDelete = (i) => {
-		const tags = tags.slice(0)
-		tags.splice(i, 1)
-		setTags(tags)
-	}
-	const onAddition = (tag) => {
-		const tags = tags.concat(tag)
-		setTags( tags )
-	}
-
-
-
 
 //todo Function compare arrays ---------------------------------
 	const compareArrays = (array1, array2) => {
@@ -153,33 +127,25 @@ function InputEnter() {
 //Todo -----------------------JSX-------------------------------
 	return (
 		<div className='form'>
-			<ReactTags
-				ref={reactTags}
-				tags={tags}
-				suggestions={suggestions}
-				onDelete={onDelete}
-				onAddition={onAddition}
-				minQueryLength={1}
-			/>
 			<InputGroup className='inputGroup'>
 				<p className='p-2'>
 					Название продуктов нужно вводить через " , " для корректного
 					работы проложения
 				</p>
-				<input
-					placeholder='Картошка, лук, ...'
-					value={inputValue}
-					list='variant'
-					className='inputName'
-					onChange={inputHandler}
-					autoFocus
-					onKeyPress={e => {
-						if (e.key === 'Enter') {
-							submitHandler(e)
-							e.target.blur()
-						}
-					}}
-				/>
+				{/*<input*/}
+				{/*	placeholder='Картошка, лук, ...'*/}
+				{/*	value={inputValue}*/}
+				{/*	list='variant'*/}
+				{/*	className='inputName'*/}
+				{/*	onChange={inputHandler}*/}
+				{/*	autoFocus*/}
+				{/*	onKeyPress={e => {*/}
+				{/*		if (e.key === 'Enter') {*/}
+				{/*			submitHandler(e)*/}
+				{/*			e.target.blur()*/}
+				{/*		}*/}
+				{/*	}}*/}
+				{/*/>*/}
 				{/*<datalist id='variant' className='datalist'>*/}
 				{/*	{optionList.map((item, index) => (*/}
 				{/*		<option value={item} key={index + item}>*/}
@@ -187,9 +153,9 @@ function InputEnter() {
 				{/*		</option>*/}
 				{/*	))}*/}
 				{/*</datalist>*/}
-
+				<Tags optionList={optionList}/>
 				<Button
-					className='mt-3 w-100'
+					className='mt-1 w-100'
 					variant='success'
 					type='submit'
 					onClick={submitHandler}

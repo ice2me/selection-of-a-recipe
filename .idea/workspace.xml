@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e373de79-01e7-404d-a7d4-eee9600eb0db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/AddRecipe/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddRecipe/AddRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/InputEnter.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/InputEnter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +101,7 @@
       <workItem from="1631692743869" duration="22895000" />
       <workItem from="1631790683129" duration="8213000" />
       <workItem from="1631868362504" duration="12642000" />
-      <workItem from="1631882730251" duration="4664000" />
+      <workItem from="1631882730251" duration="11542000" />
     </task>
     <servers />
   </component>
