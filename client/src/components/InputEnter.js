@@ -15,7 +15,7 @@ function InputEnter() {
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
 
 	const fetchRecipes = useCallback(async () => {
-		const productsResponse = await axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish')
+		const productsResponse = await axios.get('https://main--competent-jennings-ab1095.netlify.app/api/recipe/dish')
 		// const productsResponse = await axios.get('http://localhost:5000/api/recipe/dish')
 		setProducts(productsResponse.data)
 	}, [])
