@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === "prod") {
 	});
 }
 
-// const PORT = config.get("port") || 5000;
-const PORT = process.env.PORT || 5000
+const PORT = config.get("port") || 5000;
+// const PORT = process.env.PORT || 5000
 
 async function start() {
 	try {
