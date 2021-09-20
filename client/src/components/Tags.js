@@ -1,21 +1,16 @@
-import {useState, useRef} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import ReactTags from 'react-tag-autocomplete'
 import './Tags.css'
 
-function Tags({optionList}) {
-	const [tags, setTags] = useState([
-		{ id: 1, name: "Apples" },
-		{ id: 2, name: "Pears" }
-	])
-	const [suggestions, setSuggestions] = useState([
-		{ id: 3, name: "Bananas" },
-		{ id: 4, name: "Mangos" },
-		{ id: 5, name: "Lemons" },
-		{ id: 6, name: "Apricots" }
-	])
+function Tags({
+				  optionList,
+				  setInpIngredientList,
+				  dishPartly,
+				  dishFull
+}){
+	const [tags, setTags] = useState([])
+	const [suggestions, setSuggestions] = useState([])
 	const reactTags = useRef()
-
-
 
 	const onDelete = (i) => {
 		const tagsNew = tags.slice(0)
@@ -23,15 +18,36 @@ function Tags({optionList}) {
 		setTags(tagsNew)
 	}
 	const onAddition = (tag) => {
-		console.log(tag)
 		const tagsNew = tags.concat(tag)
 		setTags( tagsNew )
 	}
 
-	console.log(optionList)
+
+	useEffect(() => {
+		if (optionList.length > 0) {
+			setSuggestions(
+				optionList.map(item => {
+					return {id: Date.now(), name: item}
+				})
+			)
+		}
+	},[optionList])
+
+	useEffect(()=> {
+		setInpIngredientList(tags.map(it=> it.name.toLowerCase()))
+	}, [tags])
+
+	useEffect(()=> {
+		(dishPartly || dishFull) < 1 && setTags([])
+	}, [dishPartly,dishFull])
+
+
+
+
 	return (
 		<>
-			<ReactTags className='datalist'
+			<ReactTags
+				className='datalist'
 				ref={reactTags}
 				tags={tags}
 				suggestions={suggestions}

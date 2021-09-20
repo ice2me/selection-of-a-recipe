@@ -6,18 +6,18 @@
 	line-height: 1.2;
 	cursor: text;
 }
-
+.react-tags__search-input{
+	width: 100% !important;
+}
 .react-tags.is-focused {
 	border-color: #B1B1B1;
 }
-
 .react-tags__selected {
 	display: list-item;
 	max-height: 200px;
 	overflow-x: auto;
-	margin-bottom: 10px;
+	margin-bottom: 2px;
 }
-
 .react-tags__selected-tag {
 	display: inline-block;
 	box-sizing: border-box;
@@ -30,18 +30,15 @@
 	font-size: inherit;
 	line-height: inherit;
 }
-
 .react-tags__selected-tag:after {
 	content: '\2715';
 	color: #AAA;
 	margin-left: 8px;
 }
-
 .react-tags__selected-tag:hover,
 .react-tags__selected-tag:focus {
 	border-color: #B1B1B1;
 }
-
 .react-tags__search {
 	width: 99%;
 	display: inline-block;
@@ -51,16 +48,11 @@
 	padding: 7px 12px;
 	margin-bottom: 6px;
 }
-
 @media screen and (min-width: 30em) {
-
-.react-tags__search {
-	/* this will become the offsetParent for suggestions */
-	position: relative;
+	.react-tags__search {
+		position: relative;
+	}
 }
-
-}
-
 .react-tags__search-input {
 	margin: 0;
 	padding: 0;
@@ -69,36 +61,28 @@
 	font-size: inherit;
 	line-height: inherit;
 }
-
 .react-tags__search-input::-ms-clear {
 	display: none;
 }
-
 .react-tags__suggestions {
-	height: 40px;
+	height: 45px;
 	position: absolute;
 	top: 110%;
 	left: -3px;
 	width: 100%;
 	z-index: 50;
 }
-
 @media screen and (min-width: 30em) {
-
-.react-tags__suggestions {
-	width: max-content;
+	.react-tags__suggestions {
+		width: max-content;
+	}
 }
-
-}
-
 .react-tags__suggestions ul {
 	height: 100%;
 	width: 100%;
-	margin: 4px 1px;
+	margin: 0 1px;
 	list-style: none;
-
 }
-
 .react-tags__suggestions li {
 	width: 100%;
 	height: 100%;
@@ -109,25 +93,22 @@
 	background: rgba(81, 94, 15, 1);
 	border: 1px solid #D1D1D1;
 	border-radius: 8px;
-	box-shadow: 0 2px 6px rgba(150, 150, 150, 0.9);
+	box-shadow: 0 1px 3px rgba(150, 150, 150, 0.9);
 }
-
 .react-tags__suggestions li mark {
 	background: none;
-	font-weight: 600;
+	font-weight: bold;
+	color: orangered;
 }
-
 .react-tags__suggestions li:hover {
 	cursor: pointer;
 	height: 100%;
 	background: rgba(150, 150, 150, 1);
 }
-
 .react-tags__suggestions li.is-active {
 	height: 100%;
 	background: rgba(150, 150, 150, 0.9);
 }
-
 .react-tags__suggestions li.is-disabled {
 	opacity: 0.9;
 	cursor: auto;

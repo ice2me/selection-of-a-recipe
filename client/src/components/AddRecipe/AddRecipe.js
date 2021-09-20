@@ -44,7 +44,7 @@ function AddRecipe({closeAddRecipeModal}) {
 
 	useEffect(() => {
 		setIngredients(ingredients.concat([{testId: Date.now(), name: '', quantity: ''}]))
-	}, [])
+	}, [setIngredients])
 //todo---------------------------------------------------
 
 	const submitHandler = async (e) => {
@@ -106,7 +106,7 @@ function AddRecipe({closeAddRecipeModal}) {
 				closeAddRecipeModal()
 			}
 		})
-	}, [])
+	}, [closeAddRecipeModal])
 
 	return (
 		<div className='add-recipe'>
@@ -154,7 +154,7 @@ function AddRecipe({closeAddRecipeModal}) {
 							recipePhoto &&
 							<img
 								src={recipePhoto}
-								alt="photo recipe"
+								alt="recipe"
 								style={{width: '220px', marginLeft: '15px'}}
 							/>
 						}
