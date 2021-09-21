@@ -10,11 +10,11 @@ function AddBlockInput({
 						   isAddVisible,
 						   isDelete
 					   }) {
-
+	
 	const [disabled, setDisabled] = useState(false)
 	const [ingredient, setIngredient] = useState({name: '', quantity: ''})
-
-
+	
+	
 	const onInputChangeHandler = (name, value) => {
 		setIngredient({...ingredient, ...{[name]: value}})
 	}
@@ -25,7 +25,7 @@ function AddBlockInput({
 			setDisabled(true)
 		}
 	}
-
+	
 	return (
 		<div className='blockInp w-100'>
 			<div>
@@ -75,7 +75,7 @@ function AddBlockInput({
 			</div>
 			{isAddVisible &&
 			<Button
-				variant='success'
+				style={{backgroundColor: 'rgba(233,79,8, 1)', border: 'none'}}
 				type='button'
 				className='ml-3'
 				disabled={(ingredient.name === '' || ingredient.quantity === '')}
@@ -84,10 +84,10 @@ function AddBlockInput({
 				+
 			</Button>
 			}
-
+			
 			{
 				isDelete && <Button
-					variant='success'
+					style={{backgroundColor: 'rgba(233,79,8, 1)', border: 'none'}}
 					type='button'
 					className='ml-3'
 					onClick={() => onDeleteHandler(id)}

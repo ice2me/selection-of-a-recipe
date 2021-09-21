@@ -19,7 +19,7 @@ function AddRecipe({closeAddRecipeModal}) {
 			e.preventDefault()
 			setIngredients(ingredients.concat())
 		}
-
+	
 	const ingredientsChangeHandler = (id, name, value) => {
 		const listIngredients = ingredients.map(item => {
 			if (item.testId === id) {
@@ -30,23 +30,23 @@ function AddRecipe({closeAddRecipeModal}) {
 			return item
 		})
 		setIngredients(listIngredients)
-
+		
 	}
-
+	
 	const addNewIngredientsHandler = () => {
 		setIngredients(ingredients.concat([{testId: Date.now(), name: '', quantity: ''}]))
 	}
-
-
+	
+	
 	const deleteHandler = (id) => {
 		setIngredients(ingredients.filter(ingredient => ingredient.testId !== id))
 	}
-
+	
 	useEffect(() => {
 		setIngredients(ingredients.concat([{testId: Date.now(), name: '', quantity: ''}]))
 	}, [setIngredients])
 //todo---------------------------------------------------
-
+	
 	const submitHandler = async (e) => {
 		e.preventDefault()
 		const payload = {
@@ -69,12 +69,12 @@ function AddRecipe({closeAddRecipeModal}) {
 		e.preventDefault();
 		setRecipeName(e.target.value);
 	}
-
+	
 	const addRecipeDescriptionValue = (e) => {
 		e.preventDefault();
 		setDescription(e.target.value);
 	}
-
+	
 	const resizeFile = (file) => {
 		Resizer.imageFileResizer(
 			file,
@@ -91,8 +91,8 @@ function AddRecipe({closeAddRecipeModal}) {
 			200
 		)
 	}
-
-
+	
+	
 	const addRecipePhoto = (e) => {
 		e.preventDefault()
 		const file = e.target.files[0]
@@ -107,7 +107,7 @@ function AddRecipe({closeAddRecipeModal}) {
 			}
 		})
 	}, [closeAddRecipeModal])
-
+	
 	return (
 		<div className='add-recipe'>
 			<h1>
@@ -133,7 +133,7 @@ function AddRecipe({closeAddRecipeModal}) {
 						   title={'Введите название рецепта'}
 						   autoFocus
 					/>
-
+				
 				</label>
 				{!recipePhoto
 					?
@@ -160,7 +160,7 @@ function AddRecipe({closeAddRecipeModal}) {
 						}
 					</>
 				}
-
+				
 				{ingredients.map((ingredient, index) => <AddBlockInput
 					key={ingredient.testId}
 					id={ingredient.testId}
@@ -187,7 +187,7 @@ function AddRecipe({closeAddRecipeModal}) {
 				{
 					(recipeName && recipePhoto && ingredients && description) ?
 						<Button
-							variant='primary'
+							style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 							type='button'
 							onClick={submitHandler}
 							title={'Отправить рецепт'}
@@ -196,7 +196,7 @@ function AddRecipe({closeAddRecipeModal}) {
 						</Button>
 						:
 						<Button
-							variant='danger'
+							style={{backgroundColor: 'rgba(142,104,89, 1)', border: 'none'}}
 							type='button'
 							disabled={true}
 							title={'Заполните все поля перед отправкой'}
@@ -204,7 +204,7 @@ function AddRecipe({closeAddRecipeModal}) {
 							Отправить &#10008;
 						</Button>
 				}
-
+			
 			</form>
 		</div>
 	)

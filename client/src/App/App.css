@@ -31,7 +31,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to top right, #030303, #131505, rgba(34, 40, 8, 0.99), rgba(50, 58, 10, 0.99), rgba(66, 76, 12, 0.99), rgba(81, 94, 15, 0.98), rgba(97, 113, 17, 0.98), rgba(112, 131, 20, 0.97), rgba(128, 149, 22, 0.97), rgba(144, 167, 24, 0.97), rgba(159, 186, 27, 0.96), rgba(175, 204, 29, 0.96));
+  background-image: linear-gradient(to top right, #8c6758, #8c6758, rgba(140, 103, 88, 0.99), rgba(140, 103, 88, 0.99), rgba(140, 103, 88, 0.99), rgba(140, 103, 88, 0.98), rgba(140, 103, 88, 0.98), rgba(140, 103, 88, 0.97), rgba(140, 103, 88, 0.97), rgba(140, 103, 88, 0.97), rgba(140, 103, 88, 0.96), rgba(140, 103, 88, 0.96));
   outline: none;
   scroll-behavior: smooth;
 }
@@ -87,6 +87,7 @@ input:active, input:focus {
 
 button:active, button:focus {
   outline: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(77, 13, 28, 0.5) !important;
 }
 
 button::-moz-focus-inner {
@@ -126,18 +127,18 @@ p, h1, h2, h3, h4, h5, span, li, button, input {
 }
 
 html:not(.touch-screen)::-webkit-scrollbar-track, html:not(.touch-screen) *::-webkit-scrollbar-track {
-  background: rgba(40, 167, 69, 0.53);
+  border: 1px solid rgba(250, 240, 250, 0.5);
+  background: rgba(237, 174, 1, 0.53);
   border-radius: 25px;
 }
 
 html:not(.touch-screen)::-webkit-scrollbar-thumb, html:not(.touch-screen) *::-webkit-scrollbar-thumb {
-  background: #fafa45;
+  background: #d61800;
   border-radius: 20px;
-  border: 1px solid rgba(40, 167, 69, 0.53);
 }
 
 html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 #root {
@@ -166,20 +167,20 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   overflow: hidden;
   padding: 25px 0;
   border-radius: 8px;
-  background-image: linear-gradient(to top right, #030303, #131505, rgba(34, 40, 8, 0.99), rgba(50, 58, 10, 0.99), rgba(66, 76, 12, 0.99), rgba(81, 94, 15, 0.98), rgba(97, 113, 17, 0.98), rgba(112, 131, 20, 0.97), rgba(128, 149, 22, 0.97), rgba(144, 167, 24, 0.97), rgba(159, 186, 27, 0.96), rgba(175, 204, 29, 0.96));
+  background-image: linear-gradient(to top right, #7f152e, #7f152e, rgba(127, 21, 46, 0.99), rgba(127, 21, 46, 0.99), rgba(127, 21, 46, 0.99), rgba(127, 21, 46, 0.98), rgba(127, 21, 46, 0.98), rgba(127, 21, 46, 0.97), rgba(127, 21, 46, 0.97), rgba(127, 21, 46, 0.97), rgba(127, 21, 46, 0.96), rgba(127, 21, 46, 0.96));
   cursor: default;
   position: relative;
   border: 1px solid #fff;
   border-radius: 8px;
   color: #fff;
-  box-shadow: 0px -100px 30px -16px rgba(10, 10, 0, 0.5) inset;
+  box-shadow: 0px -100px 65px -30px rgba(10, 10, 0, 0.5) inset;
 }
 .App h1 {
   font-size: 35px;
 }
 @media screen and (max-width: 380px) {
   .App h1 {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 .App h2 {
@@ -217,6 +218,12 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   }
 }
 
+@media screen and (max-width: 680px) {
+  .copyright {
+    display: none;
+  }
+}
+
 .datalist {
   width: 100%;
 }
@@ -236,13 +243,13 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   }
 }
 .inputName:disabled {
-  background-color: rgba(150, 150, 150, 0.9);
-  border: 1px solid rgba(150, 150, 150, 0.9);
-  color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(82, 54, 52, 0.9) !important;
+  border: 1px solid rgba(82, 54, 52, 0.9) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .btnClose {
-  background-color: rgba(40, 167, 69, 0.5);
+  background-color: rgba(233, 79, 8, 0.5);
   color: white;
 }
 @media screen and (max-width: 580px) {
@@ -251,7 +258,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   }
 }
 .btnClose:hover {
-  background-color: #28a745;
+  background-color: #a91406;
   color: #fff;
   transform: translate(0px, -1px);
 }
@@ -267,8 +274,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   box-shadow: 0px -5px 26px -9px #28a745;
   transition: all 0.5s ease;
   animation: fall ease 0.3s forwards;
-  letter-spacing: 1.5px;
-  line-height: 15px;
 }
 .cardHover b {
   font-weight: 100 !important;
@@ -280,7 +285,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 .cardBlock {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 @media screen and (max-width: 580px) {
@@ -359,6 +364,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 .imageShow img {
   width: 100%;
   height: 100%;
+  border-radius: 8px;
 }
 
 .inputGroup {
@@ -393,6 +399,15 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   right: 0;
   transform: translate(-15%, 50%);
   z-index: 1;
+}
+
+.textBlok {
+  max-height: 280px;
+  overflow-y: auto;
+}
+.textBlok p {
+  font-size: 18px !important;
+  line-height: 20px;
 }
 
 /*# sourceMappingURL=App.css.map */

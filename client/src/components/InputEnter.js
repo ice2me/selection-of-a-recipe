@@ -28,7 +28,6 @@ function InputEnter() {
 		let objIdList = [];
 		let partialObjList = [];
 		e.preventDefault();
-		console.log(inpIngredient)
 		setInpIngredient(inpIngredient)
 		
 		products.forEach((product) => {
@@ -121,7 +120,7 @@ function InputEnter() {
 				/>
 				<Button
 					className='mt-1 w-100'
-					variant='success'
+					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 					type='submit'
 					onClick={submitHandler}
 					disabled={inpIngredient.length === 0 || inpIngredient[0] === ''}
@@ -155,18 +154,18 @@ function InputEnter() {
 				)
 				}
 			</>
-			<div className='buttonAddPosition'>
-				<Button
-					variant='success'
-					type='submit'
-					onClick={openAddRecipeModal}
-				>
-					Добавить рецепт
-				</Button>
-			</div>
+			{/*<div className='buttonAddPosition'>*/}
+			{/*	<Button*/}
+			{/*		style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}*/}
+			{/*		type='submit'*/}
+			{/*		onClick={openAddRecipeModal}*/}
+			{/*	>*/}
+			{/*		Добавить рецепт*/}
+			{/*	</Button>*/}
+			{/*</div>*/}
 			<div className='buttonCleanPosition'>
 				<Button
-					variant='warning'
+					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 					type='submit'
 					onClick={cleanDish}
 				>

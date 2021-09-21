@@ -13,7 +13,7 @@
   border: 1px solid #fff;
   border-radius: 8px;
   padding: 30px 0;
-  background-image: linear-gradient(to top right, #030303, #131505, #222808, #323a0a, #424c0c, #515e0f, #617111, #708314, #809516, #90a718, #9fba1b, #afcc1d);
+  background-image: linear-gradient(to top right, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e, #7f152e);
   z-index: 10;
 }
 .add-recipe form {
@@ -21,7 +21,7 @@
   height: 100%;
   margin-top: 30px;
   color: #fff;
-  font-size: 22px;
+  font-size: 16px;
   padding: 0 20px;
   font-family: monospace;
   overflow: auto;
@@ -48,6 +48,7 @@
   width: 100%;
   height: 150px;
   border: 1px solid white;
+  font-size: 14px;
   background-color: transparent;
   border-radius: 8px;
   padding: 10px;

@@ -49,18 +49,21 @@ function ShowPartlyVariant({
 							</ul>
 						</div>
 					</div>
-					<p>
-						{prod.recipe
-						.split(' ')
-						.map((item, index) =>
-							inpValue.join('').toLowerCase() ===
-							item.toLowerCase() ? (
-								<i key={index}>{item} </i>
-							) : (
-								<b key={index} className='fw-light'>{item} </b>
-							)
-						)}
-					</p>
+					<div className='textBlok'>
+						<p>
+							{prod.recipe
+							.split(' ')
+							.map((item, index) =>
+								inpValue.join('').toLowerCase() ===
+								item.toLowerCase() ? (
+									<i key={index}>{item} </i>
+								) : (
+									<b key={index} className='fw-light'>{item} </b>
+								)
+							)}
+						</p>
+					</div>
+					
 					<button
 						type='submit'
 						onClick={(e) => deleteRecipeHandlerPartly(e, prod._id)}

@@ -8,8 +8,8 @@ function App() {
 			<h1>
 				Рецепты <span style={{color: 'red'}}>*demo</span>
 			</h1>
-	 		<InputEnter/>
-			<p className='pt-3'>copyright © 2021 version 0.1</p>
+			<InputEnter/>
+			<p className='pt-3 copyright'>copyright © 2021 version 0.1</p>
 		</div>
 	);
 }
