@@ -28,7 +28,8 @@
 		"netlify": "^8.0.0",
 		"nodemon": "^2.0.7",
 		"react-device-detect": "^1.15.0",
-		"react-file-base64": "^1.0.3"
+		"react-file-base64": "^1.0.3",
+		"sass": "^1.42.0"
 	},
 	"engines": {
 		"node": "14.17.5"

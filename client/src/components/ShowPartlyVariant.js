@@ -2,7 +2,7 @@ import React from 'react';
 
 function ShowPartlyVariant({
 							   productReciept,
-							   deleteRecieptHandlerPartly,
+							   deleteRecipeHandlerPartly,
 							   inpValue
 						   }) {
 	return (
@@ -51,19 +51,19 @@ function ShowPartlyVariant({
 					</div>
 					<p>
 						{prod.recipe
-							.split(' ')
-							.map((item, index) =>
-								inpValue.join('').toLowerCase() ===
-								item.toLowerCase() ? (
-									<i key={index}>{item} </i>
-								) : (
-									<b key={index} className='fw-light'>{item} </b>
-								)
-							)}
+						.split(' ')
+						.map((item, index) =>
+							inpValue.join('').toLowerCase() ===
+							item.toLowerCase() ? (
+								<i key={index}>{item} </i>
+							) : (
+								<b key={index} className='fw-light'>{item} </b>
+							)
+						)}
 					</p>
 					<button
 						type='submit'
-						onClick={(e) => deleteRecieptHandlerPartly(e, prod._id)}
+						onClick={(e) => deleteRecipeHandlerPartly(e, prod._id)}
 						className='h-25 p-2 rounded btnClose mt-3'
 						title='Закрыть рецепт'
 					>

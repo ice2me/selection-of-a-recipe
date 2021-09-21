@@ -16,16 +16,13 @@ function InputEnter() {
 	const [products, setProducts] = useState([])
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
 	const [loading, setLoading] = useState(true)
-
-
-	// const fetchRecipes = useCallback(async () => {
+	
 	// 	// const productsResponse = await axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish')
 	// 	const productsResponse = await axios.get('http://localhost:5000/api/recipe/dish')
-	// 	setProducts(productsResponse.data)
-	// }, [])
-	const setInpIngredientList =(item) => {
+	
+	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
-}
+	}
 //Todo submit-----------------------------------------------------
 	const submitHandler = (e) => {
 		let objIdList = [];
@@ -33,7 +30,7 @@ function InputEnter() {
 		e.preventDefault();
 		console.log(inpIngredient)
 		setInpIngredient(inpIngredient)
-
+		
 		products.forEach((product) => {
 			const ingredientFlatList = product.ingredients.map((ingredient) =>
 				ingredient.name.toLowerCase()
@@ -46,17 +43,14 @@ function InputEnter() {
 				partialObjList.push(product);
 			}
 		});
-
 		setDishFull(objIdList);
 		setDishPartly(partialObjList);
-
 	};
 
 //todo Function compare arrays ---------------------------------
 	const compareArrays = (array1, array2) => {
 		array1 = array1.sort()
 		array2 = array2.sort()
-		
 		return (
 			array1.length === array2.length &&
 			array1.every((value, index) => value === array2[index])
@@ -64,16 +58,21 @@ function InputEnter() {
 	};
 
 //Todo Delete function -------------
-	const deleteRecieptHandlerFull = (e, id) => {
+	const deleteRecipeHandlerFull = (e, id) => {
 		e.preventDefault();
 		setDishFull(dishFull.filter((item) => item._id !== id));
 	};
 //Todo Delete function -------------
-	const deleteRecieptHandlerPartly = (e, id) => {
+	const deleteRecipeHandlerPartly = (e, id) => {
 		e.preventDefault();
 		setDishPartly(dishPartly.filter((item) => item._id !== id));
 	};
-
+	
+	const cleanDish = () => {
+		setDishFull([])
+		setDishPartly([]);
+	}
+	
 	//Todo open and close AddRecipe modal window ---------------------
 	const openAddRecipeModal = (e) => {
 		e.preventDefault()
@@ -86,10 +85,11 @@ function InputEnter() {
 //TODO useEffects-----------------------------------------------
 	useEffect(() => {
 		axios.get('http://localhost:5000/api/recipe/dish').then(res => {
-			setProducts(res.data)} )
+			setProducts(res.data)
+		})
 		setLoading(false)
 	}, [])
-
+	
 	useEffect(() => {
 		const result = [];
 		products.forEach((product) => {
@@ -102,15 +102,15 @@ function InputEnter() {
 		});
 		setOptionList([...new Set(result.sort())]);
 	}, [products]);
-
+	
 	useEffect(() => {
 	}, [inpIngredient]);
-
-	if(loading) return <Onload />
+	
+	if (loading) return <Onload/>
 
 //Todo -----------------------JSX-------------------------------
 	return (
-		<div className='form' position-relative>
+		<div className='form'>
 			<InputGroup className='inputGroup'>
 				<Tags
 					optionList={optionList}
@@ -129,7 +129,7 @@ function InputEnter() {
 					Поиск &#8634;
 				</Button>
 			</InputGroup>
-
+			
 			{addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal}/>}
 			{
 				!(dishFull.length > 0 || dishPartly.length > 0 || inpIngredient.length > 0) &&
@@ -139,7 +139,7 @@ function InputEnter() {
 				{dishFull.length > 0 && (
 					<ShowFullVariant
 						productReciept={dishFull}
-						deleteRecieptHandlerFull={deleteRecieptHandlerFull}
+						deleteRecipeHandlerFull={deleteRecipeHandlerFull}
 						inpValue={inpIngredient}
 					/>
 				)
@@ -149,7 +149,7 @@ function InputEnter() {
 				{dishPartly.length > 0 && (
 					<ShowPartlyVariant
 						productReciept={dishPartly}
-						deleteRecieptHandlerPartly={deleteRecieptHandlerPartly}
+						deleteRecipeHandlerPartly={deleteRecipeHandlerPartly}
 						inpValue={inpIngredient}
 					/>
 				)
@@ -157,7 +157,6 @@ function InputEnter() {
 			</>
 			<div className='buttonAddPosition'>
 				<Button
-					className='mb-5'
 					variant='success'
 					type='submit'
 					onClick={openAddRecipeModal}
@@ -165,9 +164,18 @@ function InputEnter() {
 					Добавить рецепт
 				</Button>
 			</div>
+			<div className='buttonCleanPosition'>
+				<Button
+					variant='warning'
+					type='submit'
+					onClick={cleanDish}
+				>
+					Очистить рецепты
+				</Button>
+			</div>
 		</div>
 	)
-
+	
 }
 
 export default InputEnter;

@@ -2,7 +2,7 @@ import React from 'react';
 
 function ShowFullVariant({
 							 productReciept,
-							 deleteRecieptHandlerFull,
+							 deleteRecipeHandlerFull,
 							 inpValue
 						 }) {
 	return (
@@ -18,7 +18,7 @@ function ShowFullVariant({
 							<div className='imageShow'>
 								<img src={prod.photo} alt={`recipe ${prod.name}`}/>
 							</div>
-
+						
 						</div>
 						<div className='blockIng'>
 							<h3>Ингридиенты</h3>
@@ -49,19 +49,19 @@ function ShowFullVariant({
 					</div>
 					<p>
 						{prod.recipe
-							.split(' ')
-							.map((item, index) =>
-								inpValue.join('').toLowerCase() ===
-								item.toLowerCase() ? (
-									<i key={index}>{item} </i>
-								) : (
-									<b key={index} className='fw-light'>{item} </b>
-								)
-							)}
+						.split(' ')
+						.map((item, index) =>
+							inpValue.join('').toLowerCase() ===
+							item.toLowerCase() ? (
+								<i key={index}>{item} </i>
+							) : (
+								<b key={index} className='fw-light'>{item} </b>
+							)
+						)}
 					</p>
 					<button
 						type='submit'
-						onClick={(e) => deleteRecieptHandlerFull(e, prod._id)}
+						onClick={(e) => deleteRecipeHandlerFull(e, prod._id)}
 						className='h-25 p-2 rounded btnClose mt-3'
 						title='Закрыть рецепт'
 					>

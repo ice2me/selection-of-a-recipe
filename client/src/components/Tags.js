@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import ReactTags from 'react-tag-autocomplete'
 import './Tags.css'
 
@@ -7,11 +7,11 @@ function Tags({
 				  setInpIngredientList,
 				  dishPartly,
 				  dishFull
-}){
+			  }) {
 	const [tags, setTags] = useState([])
 	const [suggestions, setSuggestions] = useState([])
 	const reactTags = useRef()
-
+	
 	const onDelete = (i) => {
 		const tagsNew = tags.slice(0)
 		tagsNew.splice(i, 1)
@@ -19,10 +19,10 @@ function Tags({
 	}
 	const onAddition = (tag) => {
 		const tagsNew = tags.concat(tag)
-		setTags( tagsNew )
+		setTags(tagsNew)
 	}
-
-
+	
+	
 	useEffect(() => {
 		if (optionList.length > 0) {
 			setSuggestions(
@@ -31,19 +31,16 @@ function Tags({
 				})
 			)
 		}
-	},[optionList])
-
-	useEffect(()=> {
-		setInpIngredientList(tags.map(it=> it.name.toLowerCase()))
+	}, [optionList])
+	
+	useEffect(() => {
+		setInpIngredientList(tags.map(it => it.name.toLowerCase()))
 	}, [tags])
-
-	useEffect(()=> {
+	
+	useEffect(() => {
 		(dishPartly || dishFull) < 1 && setTags([])
-	}, [dishPartly,dishFull])
-
-
-
-
+	}, [dishPartly, dishFull])
+	
 	return (
 		<>
 			<ReactTags

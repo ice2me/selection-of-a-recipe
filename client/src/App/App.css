@@ -379,5 +379,20 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
     opacity: 1;
   }
 }
+.buttonAddPosition {
+  position: absolute;
+  bottom: 5%;
+  left: -10%;
+  transform: translate(50%, 50%);
+  z-index: 1;
+}
+
+.buttonCleanPosition {
+  position: absolute;
+  bottom: 5%;
+  right: 0;
+  transform: translate(-15%, 50%);
+  z-index: 1;
+}
 
 /*# sourceMappingURL=App.css.map */
