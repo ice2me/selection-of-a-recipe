@@ -3,5 +3,5 @@
 	"jwtSecret": "perfect dish!",
 	"mongoUri": "mongodb+srv://recipes:123asdQWE!%40%23@recipes.mxat6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 	"baseUrl": "https://selection-recipe.herokuapp.com/",
-	"mongorestore --uri=mongodb+srv": "//ice2me1989@gmail.com:ice2meklez@cluster0.mdy4n.mongodb.net --archive=<dbname>.archive"
+	"mongorestore --uri=mongodb+srv": "//ice2me1989@gmail.com:ice2meklez@cluster0.mdy4n.mongodb.net --archive=myFirstDatabase.recipes.archive"
 }
