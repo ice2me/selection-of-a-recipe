@@ -1,5 +1,5 @@
 {
-	"name": "recipes",
+	"name": "recipes-front",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {

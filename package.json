@@ -1,5 +1,5 @@
 {
-	"name": "recipes",
+	"name": "recipes-back",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
