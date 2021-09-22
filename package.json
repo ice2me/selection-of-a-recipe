@@ -7,9 +7,9 @@
 		"server": "nodemon app.js",
 		"client": "npm run start --prefix client",
 		"client:install": "npm install --prefix client",
-		"client:build": "npm run build --prefix client",
+		"build": "npm run build --prefix client",
 		"dev": "cross-env NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm client:install && npm run client:build"
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm client:install && npm run build"
 	},
 	"keywords": [],
 	"author": "",
