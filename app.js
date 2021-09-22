@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require('cors');
+require('dotenv').config()
 
 const app = express();
 
@@ -15,14 +16,14 @@ app.use("/api/recipe", require("./routes/recipe.route"));
 
 if (process.env.NODE_ENV === "prod") {
 	app.use("/", express.static(path.join(__dirname, "client", "build")));
-
+	
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 	});
 }
 
-const PORT = config.get("port") || 5000;
-// const PORT = process.env.PORT || 5000
+// const PORT = config.get("port") || 5000;
+const PORT = process.env.PORT || 5000
 
 async function start() {
 	try {
