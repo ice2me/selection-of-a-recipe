@@ -3,5 +3,4 @@
 .idea
 # dependencies
 node_modules
-#client/build
-client
+client/build

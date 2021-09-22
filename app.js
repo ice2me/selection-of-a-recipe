@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require('cors');
-require('dotenv').config()
 
 const app = express();
 
@@ -22,12 +21,13 @@ if (process.env.NODE_ENV === "prod") {
 	});
 }
 
-// const PORT = config.get("port") || 5000;
-const PORT = process.env.PORT || 5000
+const PORT = config.get("port") || 5000;
+
+// const PORT = process.env.PORT || 5000
 
 async function start() {
 	try {
-		await mongoose.connect(process.env.mongoUri || config.get("mongoUri"), {
+		await mongoose.connect(config.get("mongoUri"), {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			useCreateIndex: true,
