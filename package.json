@@ -3,13 +3,13 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"start": "node app.js",
+		"start": "cross-env NODE_ENV=prod node app.js",
 		"server": "nodemon app.js",
 		"client": "npm run start --prefix client",
 		"client:install": "npm install --prefix client",
 		"build": "npm run build --prefix client",
 		"dev": "cross-env NODE_ENV=dev concurrently \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm client:install && npm run build"
+		"heroku-postbuild": "cross-env NODE_ENV=prod NPM_CONFIG_PRODUCTION=false npm install && npm client:install && npm run build"
 	},
 	"keywords": [],
 	"author": "",

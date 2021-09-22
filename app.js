@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/api/recipe", require("./routes/recipe.route"));
-
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 if (process.env.NODE_ENV === "prod") {
 	app.use("/", express.static(path.join(__dirname, "client", "build")));
 	
