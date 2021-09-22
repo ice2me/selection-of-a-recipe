@@ -17,9 +17,6 @@ function InputEnter() {
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
 	const [loading, setLoading] = useState(true)
 	
-	// 	// const productsResponse = await axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish')
-	// 	const productsResponse = await axios.get('http://localhost:5000/api/recipe/dish')
-	
 	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
 	}
@@ -83,7 +80,8 @@ function InputEnter() {
 
 //TODO useEffects-----------------------------------------------
 	useEffect(() => {
-		axios.get('http://localhost:5000/api/recipe/dish').then(res => {
+		// axios.get('http://localhost:5000/api/recipe/dish').then(res => {
+		axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish').then(res => {
 			setProducts(res.data)
 		})
 		setLoading(false)
