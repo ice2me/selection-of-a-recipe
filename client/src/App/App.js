@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
 import InputEnter from "../components/InputEnter";
+import logo from '../imgaes/logo.png'
 
 function App() {
 	return (
 		<div className='App'>
 			<h1>
-				Рецепты <span style={{color: 'red'}}>*demo</span>
+				<span><img src={logo} alt="logo" style={{width: '35px', margin: '0 10px 0 0'}}/></span>
+				Рецепты
+				<span><img src={logo} alt="logo" style={{width: '35px', margin: '0 0 0 10px'}}/></span>
 			</h1>
 			<InputEnter/>
 			<p className='pt-3 copyright'>copyright © 2021 version 0.1</p>

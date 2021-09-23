@@ -167,7 +167,7 @@ function InputEnter() {
 					type='submit'
 					onClick={cleanDish}
 				>
-					Очистить рецепты
+					Скрыть рецепты
 				</Button>
 			</div>
 		</div>
