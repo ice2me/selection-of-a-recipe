@@ -4,15 +4,15 @@ import InputEnter from "../components/InputEnter";
 import logo from '../imgaes/logo.png'
 
 function App() {
-	if (navigator.serviceWorker) {
-		try {
-			const reg = navigator.serviceWorker.register('../../sw.js')
-			console.log('SW register success', reg)
-		} catch (e) {
-			console.log('SW register fail')
-		}
-		
-	}
+	// if (navigator.serviceWorker) {
+	// 	try {
+	// 		const reg = navigator.serviceWorker.register('../../sw.js')
+	// 		console.log('SW register success', reg)
+	// 	} catch (e) {
+	// 		console.log('SW register fail')
+	// 	}
+	//
+	// }
 	return (
 		<div className='App'>
 			<h1>
