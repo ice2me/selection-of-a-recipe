@@ -7,7 +7,8 @@ function ShowPartlyVariant({
 						   }) {
 	return (
 		<>
-			<h1 className='prodName'>Частичное совпадение</h1>
+			<h1 className='prodName'>Частичное совпадение </h1>
+			<p> {(productReciept.length < 2) ? 'найден' : 'найдено'}: {productReciept.length} {(productReciept.length < 2) ? 'рецепт' : 'рецептов'}</p>
 			{productReciept.map((prod) => (
 				<div className='cardHover flex-column' key={prod._id}>
 					<div className='cardBlock'>

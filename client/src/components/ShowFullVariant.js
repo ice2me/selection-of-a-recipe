@@ -8,6 +8,7 @@ function ShowFullVariant({
 	return (
 		<>
 			<h1 className='prodName'>Полное совпадение</h1>
+			<p> {(productReciept.length < 2) ? 'найден' : 'найдено'}: {productReciept.length} {(productReciept.length < 2) ? 'рецепт' : 'рецептов'}</p>
 			{productReciept.map((prod) => (
 				<div className='cardHover flex-column' key={prod._id}>
 					<div className='cardBlock'>

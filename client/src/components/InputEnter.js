@@ -17,6 +17,7 @@ function InputEnter() {
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
 	const [loading, setLoading] = useState(true)
 	
+	
 	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
 	}
@@ -80,7 +81,6 @@ function InputEnter() {
 
 //TODO useEffects-----------------------------------------------
 	useEffect(() => {
-		// axios.get('http://localhost:5000/api/recipe/dish').then(res => {
 		axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish').then(res => {
 			setProducts(res.data)
 		})
@@ -161,15 +161,19 @@ function InputEnter() {
 			{/*		Добавить рецепт*/}
 			{/*	</Button>*/}
 			{/*</div>*/}
-			<div className='buttonCleanPosition'>
-				<Button
-					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-					type='submit'
-					onClick={cleanDish}
-				>
-					Скрыть рецепты
-				</Button>
-			</div>
+			{
+				(dishPartly.length > 0 || dishFull.length > 0)
+				&&
+				(<div className='buttonCleanPosition'>
+					<Button
+						style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
+						type='submit'
+						onClick={cleanDish}
+					>
+						Скрыть рецепты
+					</Button>
+				</div>)
+			}
 		</div>
 	)
 	
