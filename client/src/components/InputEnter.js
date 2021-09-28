@@ -130,7 +130,7 @@ function InputEnter() {
 			{addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal}/>}
 			{
 				!(dishFull.length > 0 || dishPartly.length > 0 || inpIngredient.length > 0) &&
-				<h1 className='text-center mt-5'>&#8679;&#8679;&#8679; Введите ингридиенты &#8679;&#8679;&#8679;</h1>
+				<h1 className='text-center mt-5'>&#8679;&#8679;&#8679; Введите ингредиенты &#8679;&#8679;&#8679;</h1>
 			}
 			<>
 				{dishFull.length > 0 && (
