@@ -22,7 +22,7 @@ function InputEnter() {
 		let objIdList = [];
 		let partialObjList = [];
 		e.preventDefault();
-		axios.post('http://localhost:5000/api/search', inpIngredient).then(res => {
+		axios.post('https://selection-recipe.herokuapp.com/api/search', inpIngredient).then(res => {
 			const recipeData = res.data
 			setDishPartly(recipeData.partial)
 			setDishFull(recipeData.full);
@@ -63,7 +63,7 @@ function InputEnter() {
 	}, [])
 	
 	useEffect(() => {
-		axios.get('http://localhost:5000/api/tags/').then(res => {
+		axios.get('https://selection-recipe.herokuapp.com/api/tags/').then(res => {
 			setOptionList(res.data)
 		})
 	}, [])
