@@ -7,26 +7,32 @@ function ShowFullVariant({
 						 }) {
 	return (
 		<>
-			<h1 className='prodName'>Полное совпадение</h1>
-			<p> {(productReciept.length < 2) ? 'найден' : 'найдено'}: {productReciept.length} {(productReciept.length < 2) ? 'рецепт' : 'рецептов'}</p>
+			<h1 className="prodName">Полное совпадение</h1>
+			<p> Рецептов найдено : {productReciept.length}</p>
 			{productReciept.map((prod) => (
-				<div className='cardHover flex-column' key={prod._id}>
-					<div className='cardBlock'>
-						<div className='blockName pr-5'>
-							<h2 className='mb-5'>
+				<div
+					className="cardHover flex-column"
+					key={prod._id}
+				>
+					<div className="cardBlock">
+						<div className="blockName pr-5">
+							<h2 className="mb-5">
 								<span>{prod.name}</span>
 							</h2>
-							<div className='imageShow'>
-								<img src={prod.photo} alt={`recipe ${prod.name}`}/>
+							<div className="imageShow">
+								<img
+									src={prod.photo}
+									alt={`recipe ${prod.name}`}
+								/>
 							</div>
 						
 						</div>
-						<div className='blockIng'>
+						<div className="blockIng">
 							<h3>Ингридиенты</h3>
 							<ul>
 								{prod.ingredients.map((item, index) => (
 									<li key={index + item.name}>
-										<ul className='d-flex align-items-center justify-content-between fw-bold border-bottom'>
+										<ul className="d-flex align-items-center justify-content-between fw-bold border-bottom">
 											<li
 												className={
 													inpValue.some((inp) => {
@@ -37,7 +43,8 @@ function ShowFullVariant({
 													})
 														? 'activeIngridients'
 														: ''
-												}>
+												}
+											>
 												&#10004;
 											</li>
 											<li>{item.name}</li>
@@ -48,26 +55,27 @@ function ShowFullVariant({
 							</ul>
 						</div>
 					</div>
-					<div className='textBlok'>
+					<div className="textBlok">
 						<p>
-							{prod.recipe
-							.split(' ')
-							.map((item, index) =>
+							{prod.recipe.split(' ').map((item, index) =>
 								inpValue.join('').toLowerCase() ===
 								item.toLowerCase() ? (
 									<i key={index}>{item} </i>
 								) : (
-									<b key={index} className='fw-light'>{item} </b>
+									<b
+										key={index}
+										className="fw-light"
+									>{item} </b>
 								)
 							)}
 						</p>
 					</div>
 					
 					<button
-						type='submit'
+						type="submit"
 						onClick={(e) => deleteRecipeHandlerFull(e, prod._id)}
-						className='h-25 p-2 rounded btnClose mt-3'
-						title='Закрыть рецепт'
+						className="h-25 p-2 rounded btnClose mt-3"
+						title="Закрыть рецепт"
 					>
 						&#10008;
 					</button>

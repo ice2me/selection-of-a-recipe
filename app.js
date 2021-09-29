@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use("/api/recipe", require("./routes/recipe.route"));
+app.use("/api/tags", require("./routes/tags.route"));
+app.use("/api/search", require("./routes/search.router"));
+
 console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 if (process.env.NODE_ENV.includes('prod')) {
 	app.use("/", express.static(path.join(__dirname, "client", "build")));
@@ -20,8 +23,6 @@ if (process.env.NODE_ENV.includes('prod')) {
 		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 	});
 }
-
-// const PORT = config.get("port") || 5000;
 
 const PORT = process.env.PORT || 5000
 

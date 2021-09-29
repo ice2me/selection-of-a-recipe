@@ -5,8 +5,6 @@ import ShowPartlyVariant from "./ShowPartlyVariant";
 import Tags from './Tags'
 import AddRecipe from "./AddRecipe/AddRecipe";
 import axios from "axios";
-import Onload from "../components/Onload/Onload";
-
 
 function InputEnter() {
 	const [inpIngredient, setInpIngredient] = useState([])
@@ -15,8 +13,6 @@ function InputEnter() {
 	const [dishPartly, setDishPartly] = useState([]);
 	const [products, setProducts] = useState([])
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
-	const [loading, setLoading] = useState(true)
-	
 	
 	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
@@ -26,33 +22,13 @@ function InputEnter() {
 		let objIdList = [];
 		let partialObjList = [];
 		e.preventDefault();
-		setInpIngredient(inpIngredient)
-		
-		products.forEach((product) => {
-			const ingredientFlatList = product.ingredients.map((ingredient) =>
-				ingredient.name.toLowerCase()
-			);
-			if (compareArrays(ingredientFlatList, inpIngredient)) {
-				objIdList.push(product);
-			} else if (
-				inpIngredient.every((r) => ingredientFlatList.includes(r))
-			) {
-				partialObjList.push(product);
-			}
-		});
-		setDishFull(objIdList);
-		setDishPartly(partialObjList);
+		axios.post('http://localhost:5000/api/search', inpIngredient).then(res => {
+			const recipeData = res.data
+			setDishPartly(recipeData.partial)
+			setDishFull(recipeData.full);
+		})
 	};
 
-//todo Function compare arrays ---------------------------------
-	const compareArrays = (array1, array2) => {
-		array1 = array1.sort()
-		array2 = array2.sort()
-		return (
-			array1.length === array2.length &&
-			array1.every((value, index) => value === array2[index])
-		);
-	};
 
 //Todo Delete function -------------
 	const deleteRecipeHandlerFull = (e, id) => {
@@ -84,31 +60,23 @@ function InputEnter() {
 		axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish').then(res => {
 			setProducts(res.data)
 		})
-		setLoading(false)
 	}, [])
 	
 	useEffect(() => {
-		const result = [];
-		products.forEach((product) => {
-			product.ingredients.map((ingredient) => {
-				if (!ingredient.name) return ingredient.name;
-				return result.push(
-					ingredient.name[0].toUpperCase() + ingredient.name.slice(1)
-				);
-			});
-		});
-		setOptionList([...new Set(result.sort())]);
-	}, [products]);
+		axios.get('http://localhost:5000/api/tags/').then(res => {
+			setOptionList(res.data)
+		})
+	}, [])
+	
 	
 	useEffect(() => {
 	}, [inpIngredient]);
-	
-	if (loading) return <Onload/>
+
 
 //Todo -----------------------JSX-------------------------------
 	return (
-		<div className='form'>
-			<InputGroup className='inputGroup'>
+		<div className="form">
+			<InputGroup className="inputGroup">
 				<Tags
 					optionList={optionList}
 					setInpIngredientList={setInpIngredientList}
@@ -117,20 +85,19 @@ function InputEnter() {
 					dishFull={dishFull}
 				/>
 				<Button
-					className='mt-1 w-100'
+					className="mt-1 w-100"
 					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-					type='submit'
+					type="submit"
 					onClick={submitHandler}
 					disabled={inpIngredient.length === 0 || inpIngredient[0] === ''}
 				>
 					Поиск &#8634;
 				</Button>
 			</InputGroup>
-			
-			{addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal}/>}
+			{addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal} />}
 			{
 				!(dishFull.length > 0 || dishPartly.length > 0 || inpIngredient.length > 0) &&
-				<h1 className='text-center mt-5'>&#8679;&#8679;&#8679; Введите ингредиенты &#8679;&#8679;&#8679;</h1>
+				<h1 className="text-center mt-5">&#8679;&#8679;&#8679; Введите ингредиенты &#8679;&#8679;&#8679;</h1>
 			}
 			<>
 				{dishFull.length > 0 && (
@@ -164,10 +131,10 @@ function InputEnter() {
 			{
 				(dishPartly.length > 0 || dishFull.length > 0)
 				&&
-				(<div className='buttonCleanPosition'>
+				(<div className="buttonCleanPosition">
 					<Button
 						style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-						type='submit'
+						type="submit"
 						onClick={cleanDish}
 					>
 						Скрыть рецепты
