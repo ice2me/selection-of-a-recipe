@@ -8,7 +8,7 @@ function ShowPartlyVariant({
 	return (
 		<>
 			<h1 className="prodName">Частичное совпадение </h1>
-			<p> Рецептов найдено : {productReciept.length}</p>
+			<p> Рецептов найдено: {productReciept.length}</p>
 			{productReciept.map((prod) => (
 				<div
 					className="cardHover flex-column"
@@ -76,7 +76,7 @@ function ShowPartlyVariant({
 					<button
 						type="submit"
 						onClick={(e) => deleteRecipeHandlerPartly(e, prod._id)}
-						className="h-25 p-2 rounded btnClose mt-3"
+						className="p-2 btnClose"
 						title="Закрыть рецепт"
 					>
 						&#10008;

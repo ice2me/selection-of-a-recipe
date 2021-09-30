@@ -56,7 +56,6 @@ function AddRecipe({closeAddRecipeModal}) {
 			recipe: description
 		}
 		try {
-			// await axios.post('http://localhost:5000/api/recipe/dish', payload);
 			await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
 		} catch (e) {
 			console.error(e.message)
@@ -109,43 +108,46 @@ function AddRecipe({closeAddRecipeModal}) {
 	}, [closeAddRecipeModal])
 	
 	return (
-		<div className='add-recipe'>
+		<div className="add-recipe">
 			<h1>
 				Добавить рецепт
 			</h1>
 			<Button
-				variant='secondary'
-				type='submit'
-				className='closeButtonModal'
+				variant="secondary"
+				type="submit"
+				className="closeButtonModal"
 				onClick={closeAddRecipeModal}
 			>
 				Закрыть &#10008;
 			</Button>
-			<form autoComplete='new-password'>
+			<form autoComplete="new-password">
 				<label htmlFor="name-recipe">Название рецепта *
-					<input type="text"
-						   placeholder='Название рецепта'
-						   className='inputName'
-						   name='name'
-						   id='name-recipe'
-						   value={recipeName}
-						   onChange={addNameValue}
-						   title={'Введите название рецепта'}
-						   autoFocus
+					<input
+						type="text"
+						placeholder="Название рецепта"
+						className="inputName"
+						name="name"
+						id="name-recipe"
+						value={recipeName}
+						onChange={addNameValue}
+						title={'Введите название рецепта'}
+						autoFocus
 					/>
 				
 				</label>
 				{!recipePhoto
 					?
-					<label htmlFor="name-recipe"
+					<label
+						htmlFor="name-recipe"
 					>
 						Добавить фото *
-						<input type='file'
-							   className='blockInp ml-1'
-							   name='nameFile'
-							   id='name-file'
-							   onChange={addRecipePhoto}
-							   title={'Добавить фото рецепта'}
+						<input
+							type="file"
+							className="blockInp ml-1"
+							name="nameFile"
+							id="name-file"
+							onChange={addRecipePhoto}
+							title={'Добавить фото рецепта'}
 						/>
 					</label>
 					:
@@ -172,23 +174,38 @@ function AddRecipe({closeAddRecipeModal}) {
 					isAddVisible={ingredients.length - 1 === index}
 					isDelete={ingredients.length > 1}
 				/>)}
-				<textarea
-					name="recipeDescription"
-					cols="30" rows="10"
-					className='textareaName'
-					placeholder='Жульен - теплые закуски... *'
-					value={description}
-					onChange={addRecipeDescriptionValue}
-					title={'Напишите описание рецепта'}
-				/>
-				<p className='pb-2'>
+				<label
+					htmlFor="steps"
+					className="mt-3"
+				>пошаговое приготовление
+					<textarea
+						id="steps"
+						name="recipeDescription"
+						cols="30"
+						rows="10"
+						className="textareaName"
+						placeholder="Шаг №1"
+						value={description}
+						onChange={addRecipeDescriptionValue}
+						title={'Напишите описание рецепта'}
+					/>
+					<Button
+						style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
+						type="button"
+						onClick={submitHandler}
+						title={'Отправить рецепт'}
+					>
+						Отправить &#10004;
+					</Button>
+				</label>
+				<p className="pb-2">
 					* обязательное поле для заполнения
 				</p>
 				{
 					(recipeName && recipePhoto && ingredients && description) ?
 						<Button
 							style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-							type='button'
+							type="button"
 							onClick={submitHandler}
 							title={'Отправить рецепт'}
 						>
@@ -197,7 +214,7 @@ function AddRecipe({closeAddRecipeModal}) {
 						:
 						<Button
 							style={{backgroundColor: 'rgba(142,104,89, 1)', border: 'none'}}
-							type='button'
+							type="button"
 							disabled={true}
 							title={'Заполните все поля перед отправкой'}
 						>

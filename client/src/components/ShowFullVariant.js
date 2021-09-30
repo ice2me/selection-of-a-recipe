@@ -8,7 +8,7 @@ function ShowFullVariant({
 	return (
 		<>
 			<h1 className="prodName">Полное совпадение</h1>
-			<p> Рецептов найдено : {productReciept.length}</p>
+			<p> Рецептов найдено: {productReciept.length}</p>
 			{productReciept.map((prod) => (
 				<div
 					className="cardHover flex-column"
@@ -33,21 +33,14 @@ function ShowFullVariant({
 								{prod.ingredients.map((item, index) => (
 									<li key={index + item.name}>
 										<ul className="d-flex align-items-center justify-content-between fw-bold border-bottom">
-											<li
-												className={
-													inpValue.some((inp) => {
-														return (
-															inp.toLowerCase() ===
-															item.name.toLowerCase()
-														);
-													})
-														? 'activeIngridients'
-														: ''
-												}
-											>
-												&#10004;
+											<li className="d-flex align-items-center justify-content-start">
+												<p
+													className="activeIngridients"
+												>
+													&#10004;
+												</p>
+												{item.name}
 											</li>
-											<li>{item.name}</li>
 											<li>{item.quantity}</li>
 										</ul>
 									</li>
@@ -74,7 +67,7 @@ function ShowFullVariant({
 					<button
 						type="submit"
 						onClick={(e) => deleteRecipeHandlerFull(e, prod._id)}
-						className="h-25 p-2 rounded btnClose mt-3"
+						className=" p-2 btnClose"
 						title="Закрыть рецепт"
 					>
 						&#10008;

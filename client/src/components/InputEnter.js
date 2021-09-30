@@ -4,7 +4,8 @@ import ShowFullVariant from "./ShowFullVariant";
 import ShowPartlyVariant from "./ShowPartlyVariant";
 import Tags from './Tags'
 import AddRecipe from "./AddRecipe/AddRecipe";
-import axios from "axios";
+import {useHttp} from "../Hooks/http.hook";
+import Spinner from "./Spinner/Spinner";
 
 function InputEnter() {
 	const [inpIngredient, setInpIngredient] = useState([])
@@ -13,20 +14,28 @@ function InputEnter() {
 	const [dishPartly, setDishPartly] = useState([]);
 	const [products, setProducts] = useState([])
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
+	const {request, loading} = useHttp()
 	
 	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
 	}
 //Todo submit-----------------------------------------------------
-	const submitHandler = (e) => {
+	const submitHandler = async (e) => {
 		let objIdList = [];
 		let partialObjList = [];
 		e.preventDefault();
-		axios.post('https://selection-recipe.herokuapp.com/api/search', inpIngredient).then(res => {
-			const recipeData = res.data
-			setDishPartly(recipeData.partial)
-			setDishFull(recipeData.full);
-		})
+		// axios.post('https://selection-recipe.herokuapp.com/api/search', inpIngredient).then(res => {
+		// 	const recipeData = res.data
+		// 	setDishPartly(recipeData.partial)
+		// 	setDishFull(recipeData.full);
+		// })
+		try {
+			const fetched = await request("https://selection-recipe.herokuapp.com/api/search", "POST", inpIngredient);
+			setDishPartly(fetched.partial)
+			setDishFull(fetched.full);
+		} catch (e) {
+			throw e;
+		}
 	};
 
 
@@ -56,28 +65,22 @@ function InputEnter() {
 	}
 
 //TODO useEffects-----------------------------------------------
-	useEffect(() => {
-		axios.get('https://selection-recipe.herokuapp.com/api/recipe/dish').then(res => {
-			setProducts(res.data)
-		})
-	}, [])
-	
-	useEffect(() => {
-		axios.get('https://selection-recipe.herokuapp.com/api/tags/').then(res => {
-			setOptionList(res.data)
-		})
-	}, [])
-	
-	
-	useEffect(() => {
-	}, [inpIngredient]);
+	useEffect(async () => {
+		try {
+			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/", "GET", null);
+			setOptionList(fetched);
+		} catch (e) {
+			throw e;
+		}
+	}, [setOptionList])
 
 
 //Todo -----------------------JSX-------------------------------
 	return (
 		<div className="form">
-			<InputGroup className="inputGroup">
+			<InputGroup>
 				<Tags
+					className="inputGroup position-relative"
 					optionList={optionList}
 					setInpIngredientList={setInpIngredientList}
 					submitHandler={submitHandler}
@@ -85,44 +88,73 @@ function InputEnter() {
 					dishFull={dishFull}
 				/>
 				<Button
-					className="mt-1 w-100"
 					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 					type="submit"
 					onClick={submitHandler}
 					disabled={inpIngredient.length === 0 || inpIngredient[0] === ''}
 				>
-					Поиск &#8634;
+					<svg
+						width="19"
+						height="18"
+						viewBox="0 0 19 18"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M8.5 15C12.6421 15 16 11.866 16 8C16 4.13401 12.6421 1 8.5 1C4.35786 1 1 4.13401 1 8C1 11.866 4.35786 15 8.5 15Z"
+							stroke="#214e51"
+							strokeWidth="1.99583"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+						<path
+							d="M17.4888 17L13.9873 13.1331"
+							stroke="#214e51"
+							strokeWidth="1.99583"
+							strokeLinecap="round"
+							strokeLinejoin="round"
+						/>
+					</svg>
 				</Button>
 			</InputGroup>
-			{addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal} />}
+			{
+				addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal} />
+			}
 			{
 				!(dishFull.length > 0 || dishPartly.length > 0 || inpIngredient.length > 0) &&
-				<h1 className="text-center mt-5">&#8679;&#8679;&#8679; Введите ингредиенты &#8679;&#8679;&#8679;</h1>
+				<h1 className="text-center mt-5">
+					Введите ингредиенты
+				</h1>
 			}
-			<>
-				{dishFull.length > 0 && (
-					<ShowFullVariant
-						productReciept={dishFull}
-						deleteRecipeHandlerFull={deleteRecipeHandlerFull}
-						inpValue={inpIngredient}
-					/>
-				)
-				}
-			</>
-			<>
-				{dishPartly.length > 0 && (
-					<ShowPartlyVariant
-						productReciept={dishPartly}
-						deleteRecipeHandlerPartly={deleteRecipeHandlerPartly}
-						inpValue={inpIngredient}
-					/>
-				)
-				}
-			</>
-			{/*<div className='buttonAddPosition'>*/}
+			{
+				loading ?
+					<Spinner />
+					:
+					<>
+						<>
+							{dishFull.length > 0 && (
+								<ShowFullVariant
+									productReciept={dishFull}
+									deleteRecipeHandlerFull={deleteRecipeHandlerFull}
+									inpValue={inpIngredient}
+								/>
+							)}
+						</>
+						<>
+							{dishPartly.length > 0 && (
+								<ShowPartlyVariant
+									productReciept={dishPartly}
+									deleteRecipeHandlerPartly={deleteRecipeHandlerPartly}
+									inpValue={inpIngredient}
+								/>
+							)}
+						</>
+					</>
+			}
+			{/*<div className="buttonAddPosition">*/}
 			{/*	<Button*/}
 			{/*		style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}*/}
-			{/*		type='submit'*/}
+			{/*		type="submit"*/}
 			{/*		onClick={openAddRecipeModal}*/}
 			{/*	>*/}
 			{/*		Добавить рецепт*/}
