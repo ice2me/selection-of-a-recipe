@@ -46,7 +46,7 @@ input {
   font-family: monospace;
   background-color: transparent;
   color: #fff;
-  border-color: #edae01 !important;
+  border-color: rgba(237, 174, 1, 0.5) !important;
 }
 input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.4);
@@ -173,7 +173,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   cursor: default;
   position: relative;
   color: #fff;
-  box-shadow: 0px -100px 65px -30px rgba(10, 10, 0, 0.5) inset;
+  box-shadow: 0px -100px 65px -30px rgba(10, 10, 0, 0.3) inset;
 }
 .App h1 {
   font-size: 35px;
@@ -254,7 +254,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 .btnClose {
   background-color: transparent;
-  border: 1px solid #edae01;
+  border: 1px solid rgba(237, 174, 1, 0.5);
   border-radius: 4px !important;
   color: white !important;
   position: absolute;
@@ -274,7 +274,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   display: flex;
   justify-content: space-between;
   margin: 30px 0;
-  box-shadow: 0 2px 20px -4px #edae01;
+  border: 1px solid rgba(237, 174, 1, 0.5);
   transition: all 0.5s ease;
   animation: fall ease 0.3s forwards;
 }
@@ -426,7 +426,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 }
 
 .react-tags__selected-tag, .react-tags__search {
-  border-color: #edae01 !important;
+  border-color: rgba(237, 174, 1, 0.5) !important;
 }
 
 .textBlok {
