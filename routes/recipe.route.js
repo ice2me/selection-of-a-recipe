@@ -8,8 +8,8 @@ router.post(
 	"/dish",
 	async (req, res) => {
 		try {
-			const {name, photo, ingredients, recipe} = req.body;
-			const dishRecipe = new Recipe({name, photo, ingredients, recipe});
+			const {name, photo, ingredients, steps} = req.body;
+			const dishRecipe = new Recipe({name, photo, ingredients, steps});
 			await dishRecipe.save()
 			res.status(201).json("Recipe has been added")
 		} catch (e) {

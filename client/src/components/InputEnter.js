@@ -58,14 +58,18 @@ function InputEnter() {
 	}
 
 //TODO useEffects-----------------------------------------------
-	useEffect(async () => {
+	const tags = async () => {
 		try {
 			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/",);
 			setOptionList(fetched);
 		} catch (e) {
 			throw e;
 		}
-	}, [])
+	}
+	
+	useEffect(tags
+		, []
+	)
 
 
 //Todo -----------------------JSX-------------------------------

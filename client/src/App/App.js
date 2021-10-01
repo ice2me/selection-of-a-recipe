@@ -34,7 +34,7 @@ function App() {
 							</span>
 						</h1>
 						<InputEnter />
-						<p className="pt-3 copyright">copyright © 2021 version 0.1.2</p>
+						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.3</p>
 					</>
 			}
 		</div>

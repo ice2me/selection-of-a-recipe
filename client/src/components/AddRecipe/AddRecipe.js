@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
 import './AddResipe.css'
 import AddBlockInput from "./AddBloks/AddBloksInput";
-import axios from "axios";
 import Resizer from 'react-image-file-resizer'
 import AddBlokcTextarea from "./AddBloks/addBlokcTextarea";
+import {useHttp} from "../../Hooks/http.hook";
+import Spinner from "../Spinner/Spinner";
 
 
 function AddRecipe({closeAddRecipeModal}) {
@@ -12,7 +13,9 @@ function AddRecipe({closeAddRecipeModal}) {
 	const [recipeName, setRecipeName] = useState('')
 	const [descriptions, setDescriptions] = useState([])
 	const [recipePhoto, setRecipePhoto] = useState(null)
-	console.log('descriptions', descriptions)
+	const {request, loading} = useHttp()
+
+
 //Todo add new block ingredients-------------------
 	const ingredientsChangeHandler = (id, name, value) => {
 		const listIngredients = ingredients.map(item => {
@@ -44,9 +47,9 @@ function AddRecipe({closeAddRecipeModal}) {
 			steps: descriptions.filter(des => des.name !== '' && delete (des.testId))
 		}
 		try {
-			await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
+			await request("http://localhost:5000/api/recipe/dish", "POST", payload);
 		} catch (e) {
-			console.error(e.message)
+			throw e;
 		}
 		closeAddRecipeModal()
 	}
@@ -124,101 +127,101 @@ function AddRecipe({closeAddRecipeModal}) {
 			>
 				Закрыть &#10008;
 			</Button>
-			<form autoComplete="new-password">
-				<label htmlFor="name-recipe">Название рецепта *
-					<input
-						type="text"
-						placeholder="Название рецепта"
-						className="inputName"
-						name="name"
-						id="name-recipe"
-						value={recipeName}
-						onChange={addNameValue}
-						title={'Введите название рецепта'}
-						autoFocus
-					/>
-				
-				</label>
-				{!recipePhoto
-					?
-					<label
-						htmlFor="name-recipe"
-					>
-						Добавить фото *
+			{loading ? <Spinner /> :
+				<form autoComplete="new-password">
+					<label htmlFor="name-recipe">Название рецепта *
 						<input
-							type="file"
-							className="blockInp ml-1"
-							name="nameFile"
-							id="name-file"
-							onChange={addRecipePhoto}
-							title={'Добавить фото рецепта'}
+							type="text"
+							placeholder="Название рецепта"
+							className="inputName"
+							name="name"
+							id="name-recipe"
+							value={recipeName}
+							onChange={addNameValue}
+							title={'Введите название рецепта'}
+							autoFocus
 						/>
 					</label>
-					:
-					<>
-						{
-							recipePhoto &&
-							<img
-								src={recipePhoto}
-								alt="recipe"
-								style={{width: '220px', marginLeft: '15px'}}
+					{!recipePhoto
+						?
+						<label
+							htmlFor="name-recipe"
+						>
+							Добавить фото *
+							<input
+								type="file"
+								className="blockInp ml-1"
+								name="nameFile"
+								id="name-file"
+								onChange={addRecipePhoto}
+								title={'Добавить фото рецепта'}
 							/>
-						}
-					</>
-				}
-				
-				{ingredients.map((ingredient, index) => <AddBlockInput
-					key={ingredient.testId}
-					id={ingredient.testId}
-					onDeleteHandler={deleteHandler}
-					onAddNewIngredient={addNewIngredientsHandler}
-					valueIngridients={ingredients}
-					onChangeHandler={ingredientsChangeHandler}
-					// addRecipeHandler={addRecipeHandler}
-					isAddVisible={ingredients.length - 1 === index}
-					isDelete={ingredients.length > 1}
-				/>)}
-				<label
-					htmlFor="steps"
-					className="mt-3"
-				>
-					пошаговое приготовление
-					{descriptions.map((des, index) => <AddBlokcTextarea
-						key={des.testId}
-						id={des.testId}
-						descriptions={descriptions}
-						descriptionChangeHandler={descriptionChangeHandler}
-						addNewTextarea={addNewTextarea}
-						deleteTextarea={deleteTextarea}
-						isAddVisibleTextarea={descriptions.length - 1 === index}
-						isDeleteTextarea={descriptions.length > 1}
-					/>)}
-				</label>
-				<p className="pb-2">
-					* обязательное поле для заполнения
-				</p>
-				{
-					(recipeName && recipePhoto && ingredients && descriptions) ?
-						<Button
-							style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-							type="button"
-							onClick={submitHandler}
-							title={'Отправить рецепт'}
-						>
-							Отправить &#10004;
-						</Button>
+						</label>
 						:
-						<Button
-							style={{backgroundColor: 'rgba(142,104,89, 1)', border: 'none'}}
-							type="button"
-							disabled={true}
-							title={'Заполните все поля перед отправкой'}
-						>
-							Отправить &#10008;
-						</Button>
-				}
-			
-			</form>
+						<>
+							{
+								recipePhoto &&
+								<img
+									src={recipePhoto}
+									alt="recipe"
+									style={{width: '220px', marginLeft: '15px'}}
+								/>
+							}
+						</>
+					}
+					
+					{ingredients.map((ingredient, index) => <AddBlockInput
+						key={ingredient.testId || index}
+						id={ingredient.testId || index}
+						onDeleteHandler={deleteHandler}
+						onAddNewIngredient={addNewIngredientsHandler}
+						valueIngridients={ingredients}
+						onChangeHandler={ingredientsChangeHandler}
+						isAddVisible={ingredients.length - 1 === index}
+						isDelete={ingredients.length > 1}
+					/>)}
+					<label
+						htmlFor="steps"
+						className="mt-3"
+					>
+						пошаговое приготовление
+						{descriptions.map((des, index) => <AddBlokcTextarea
+							key={des.testId || index}
+							id={des.testId || index}
+							descriptions={descriptions}
+							descriptionChangeHandler={descriptionChangeHandler}
+							addNewTextarea={addNewTextarea}
+							deleteTextarea={deleteTextarea}
+							isAddVisibleTextarea={descriptions.length - 1 === index}
+							isDeleteTextarea={descriptions.length > 1}
+						/>)}
+					</label>
+					<p className="pb-2">
+						* обязательное поле для заполнения
+					</p>
+					{
+						(recipeName && recipePhoto && ingredients && descriptions) ?
+							<Button
+								style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
+								type="button"
+								onClick={submitHandler}
+								title={'Отправить рецепт'}
+							>
+								Отправить &#10004;
+							</Button>
+							:
+							<Button
+								style={{backgroundColor: 'rgba(142,104,89, 1)', border: 'none'}}
+								type="button"
+								disabled={true}
+								title={'Заполните все поля перед отправкой'}
+							>
+								Отправить &#10008;
+							</Button>
+					}
+				
+				</form>
+			}
 		</div>
 	)
 }

@@ -24,7 +24,7 @@ const AddBlokcTextarea = ({
 			setDisabled(true)
 		}
 	}
-	console.log('description', description)
+	
 	return (
 		<div className="description">
 			<>
