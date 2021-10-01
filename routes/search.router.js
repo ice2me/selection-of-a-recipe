@@ -11,6 +11,7 @@ router.post(
 		try {
 			const result = await Recipe.find();
 			const criteria = req.body
+			console.log(criteria)
 			let objIdList = [];
 			let partialObjList = [];
 			result.forEach((product) => {

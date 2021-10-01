@@ -44,14 +44,14 @@ function Tags({
 	return (
 		<>
 			<ReactTags
-				className='datalist'
+				className="datalist"
 				ref={reactTags}
 				tags={tags}
 				suggestions={suggestions}
 				onDelete={onDelete}
 				onAddition={onAddition}
 				minQueryLength={1}
-				placeholderText='Введите ингредиенты'
+				placeholderText="Введите ингредиенты"
 			/>
 		</>
 	);

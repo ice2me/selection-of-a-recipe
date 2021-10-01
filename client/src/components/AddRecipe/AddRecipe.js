@@ -1,25 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
 import './AddResipe.css'
-import AddBlockInput from "./AddBloksInput/AddBloksInput";
+import AddBlockInput from "./AddBloks/AddBloksInput";
 import axios from "axios";
 import Resizer from 'react-image-file-resizer'
+import AddBlokcTextarea from "./AddBloks/addBlokcTextarea";
 
 
 function AddRecipe({closeAddRecipeModal}) {
 	const [ingredients, setIngredients] = useState([])
 	const [recipeName, setRecipeName] = useState('')
-	const [description, setDescription] = useState('')
+	const [descriptions, setDescriptions] = useState([])
 	const [recipePhoto, setRecipePhoto] = useState(null)
-
-
+	console.log('descriptions', descriptions)
 //Todo add new block ingredients-------------------
-	const
-		addRecipeHandler = (e) => {
-			e.preventDefault()
-			setIngredients(ingredients.concat())
-		}
-	
 	const ingredientsChangeHandler = (id, name, value) => {
 		const listIngredients = ingredients.map(item => {
 			if (item.testId === id) {
@@ -30,30 +24,24 @@ function AddRecipe({closeAddRecipeModal}) {
 			return item
 		})
 		setIngredients(listIngredients)
-		
 	}
-	
 	const addNewIngredientsHandler = () => {
 		setIngredients(ingredients.concat([{testId: Date.now(), name: '', quantity: ''}]))
 	}
-	
-	
 	const deleteHandler = (id) => {
 		setIngredients(ingredients.filter(ingredient => ingredient.testId !== id))
 	}
-	
 	useEffect(() => {
 		setIngredients(ingredients.concat([{testId: Date.now(), name: '', quantity: ''}]))
 	}, [setIngredients])
 //todo---------------------------------------------------
-	
 	const submitHandler = async (e) => {
 		e.preventDefault()
 		const payload = {
 			name: recipeName,
 			photo: recipePhoto,
 			ingredients: ingredients.filter(ingr => ingr.name !== '' && delete (ingr.testId)),
-			recipe: description
+			steps: descriptions.filter(des => des.name !== '' && delete (des.testId))
 		}
 		try {
 			await axios.post('https://selection-recipe.herokuapp.com/api/recipe/dish', payload);
@@ -63,15 +51,31 @@ function AddRecipe({closeAddRecipeModal}) {
 		closeAddRecipeModal()
 	}
 
+//Todo Descriptions textarea---------------------------------------
+	const descriptionChangeHandler = (id, name, value) => {
+		const listIngredients = descriptions.map(item => {
+			if (item.testId === id) {
+				const updated = item
+				updated[name] = value
+				return updated
+			}
+			return item
+		})
+		setDescriptions(listIngredients)
+	}
+	const addNewTextarea = () => {
+		setDescriptions(descriptions.concat([{testId: Date.now(), recipeDescription: ''}]))
+	}
+	const deleteTextarea = (id) => {
+		setDescriptions(descriptions.filter(item => item.testId !== id))
+	}
+	useEffect(() => {
+		setDescriptions(descriptions.concat([{testId: Date.now(), recipeDescription: ''}]))
+	}, [setDescriptions])
 //Todo value inputs ---------------------------------------
 	const addNameValue = (e) => {
 		e.preventDefault();
 		setRecipeName(e.target.value);
-	}
-	
-	const addRecipeDescriptionValue = (e) => {
-		e.preventDefault();
-		setDescription(e.target.value);
 	}
 	
 	const resizeFile = (file) => {
@@ -170,39 +174,31 @@ function AddRecipe({closeAddRecipeModal}) {
 					onAddNewIngredient={addNewIngredientsHandler}
 					valueIngridients={ingredients}
 					onChangeHandler={ingredientsChangeHandler}
-					addRecipeHandler={addRecipeHandler}
+					// addRecipeHandler={addRecipeHandler}
 					isAddVisible={ingredients.length - 1 === index}
 					isDelete={ingredients.length > 1}
 				/>)}
 				<label
 					htmlFor="steps"
 					className="mt-3"
-				>пошаговое приготовление
-					<textarea
-						id="steps"
-						name="recipeDescription"
-						cols="30"
-						rows="10"
-						className="textareaName"
-						placeholder="Шаг №1"
-						value={description}
-						onChange={addRecipeDescriptionValue}
-						title={'Напишите описание рецепта'}
-					/>
-					<Button
-						style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-						type="button"
-						onClick={submitHandler}
-						title={'Отправить рецепт'}
-					>
-						Отправить &#10004;
-					</Button>
+				>
+					пошаговое приготовление
+					{descriptions.map((des, index) => <AddBlokcTextarea
+						key={des.testId}
+						id={des.testId}
+						descriptions={descriptions}
+						descriptionChangeHandler={descriptionChangeHandler}
+						addNewTextarea={addNewTextarea}
+						deleteTextarea={deleteTextarea}
+						isAddVisibleTextarea={descriptions.length - 1 === index}
+						isDeleteTextarea={descriptions.length > 1}
+					/>)}
 				</label>
 				<p className="pb-2">
 					* обязательное поле для заполнения
 				</p>
 				{
-					(recipeName && recipePhoto && ingredients && description) ?
+					(recipeName && recipePhoto && ingredients && descriptions) ?
 						<Button
 							style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 							type="button"

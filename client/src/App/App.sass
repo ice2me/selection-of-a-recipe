@@ -34,13 +34,17 @@ html, body
 input::-ms-clear
 	display: none
 
-input
+textarea::-ms-clear
+	display: none
+
+input, textarea
 	font-size: 18px
 	font-weight: bold
 	font-family: monospace
 	background-color: transparent
 	color: #fff
 	border-color: rgba(237, 174, 1, 0.5) !important
+	resize: none
 
 	&::-webkit-input-placeholder
 		color: rgba(255, 255, 255, 0.4)
@@ -74,6 +78,17 @@ input:-webkit-autofill:active
 	-webkit-transition: color 9999s ease-out, background-color 9999s ease-out
 	-webkit-transition-delay: 9999s
 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active
+	-webkit-transition: color 9999s ease-out, background-color 9999s ease-out
+	-webkit-transition-delay: 9999s
+
+textarea:disabled
+	background-color: rgba(82, 54, 52, 0.9) !important
+	border: 1px solid rgba(82, 54, 52, 0.9) !important
+	color: rgba(255, 255, 255, 0.3) !important
 
 input:active, input:focus
 	outline: none !important
@@ -135,7 +150,8 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	padding: 0 30px
 
 .App
-	width: 980px
+	max-width: 980px
+	width: 99%
 	height: 90vh
 	margin: 0 auto
 	display: flex
@@ -214,10 +230,12 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	position: absolute
 	top: 5px
 	right: 5px
+
 	&:hover
 		background-color: rgba(237, 174, 1, 1)
 		transform: translate(0px, -1px)
 		color: rgba(33, 78, 81) !important
+
 .cardHover
 	width: 100%
 	padding: 15px
@@ -229,10 +247,13 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	border: 1px solid rgba(237, 174, 1, 0.5)
 	transition: all .5s ease
 	animation: fall ease .3s forwards
+
 	b
 		font-weight: 100 !important
+
 	i
 		color: red
+
 .cardBlock
 	width: 100%
 	display: flex
@@ -242,27 +263,33 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 		flex-direction: column
 		align-items: center
 		justify-content: center
+
 .blockName
 	width: 55%
 	@media screen and (max-width: 580px)
 		width: 100%
+
 .blockIng
 	width: 54%
 	@media screen and (max-width: 580px)
 		width: 100%
+
 	li
 		font-weight: bold
 		margin-bottom: 6px
+
 .prodName
 	display: flex
 	animation: slideText 3s infinite ease
 	overflow-x: hidden
 	@media screen and (max-width: 580px)
 		text-align: center
+
 .activeIngridients
 	font-size: 20px !important
 	color: rgba(234, 122, 84, 1)
 	animation: activeIngrAnimation linear 2s infinite
+
 @keyframes activeIngrAnimation
 	0%
 		transform: rotateY(0)
@@ -274,6 +301,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 		transform: rotateY(240deg)
 	100%
 		transform: rotateY(360deg)
+
 @keyframes slideText
 	0%
 		transform: rotateX(0)
@@ -281,6 +309,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 		transform: rotateX(45deg)
 	100%
 		transform: rotateX(0)
+
 .imageShow
 	width: 380px
 	height: 260px
@@ -290,15 +319,19 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 		margin: 0 auto 30px
 	@media screen and (max-width: 380px)
 		width: 100%
+
 	img
 		width: 100%
 		height: 100%
 		border-radius: 4px
+
 .inputGroup
 	max-width: 100%
 	margin: 25px 0
+
 .input-group
 	flex-wrap: nowrap !important
+
 @keyframes fall
 	0%
 		transform: translateX(-200px)
@@ -306,6 +339,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	100%
 		transform: translateX(0)
 		opacity: 1
+
 .buttonAddPosition
 	position: absolute
 	bottom: 10px
@@ -353,3 +387,4 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	100%
 		opacity: 1
 		transform: rotateZ(360deg)
+

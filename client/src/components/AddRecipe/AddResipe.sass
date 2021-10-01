@@ -37,14 +37,17 @@
 			margin-top: 10px
 
 			&::placeholder
-				color: rgba(255, 255, 255, 0.5)
+				color: rgba(255, 255, 255, 0.5) !important
+
+		input
+			width: 93.5%
 
 	h1
 		text-align: center
 		color: #fff
 
 .textareaName
-	width: 100%
+	width: 93.5%
 	height: 150px
 	border: 1px solid rgba(255, 255, 255, 1)
 	font-size: 14px
@@ -68,12 +71,25 @@
 	right: 30px
 
 .blockInp
-	width: max-content
+	width: 93.5%
 	display: flex
 	align-items: center
 	justify-content: flex-start
-	border: 2px solid rgba(255, 255, 255, 0.2)
+	border: 2px solid rgba(237, 174, 1, 0.5)
 	padding: 20px
 	margin-top: 8px
 	border-radius: 8px
 
+.description
+	width: 100%
+	display: flex
+	align-items: baseline
+	justify-content: flex-start
+
+.descriptionBtn
+	width: 60px
+	flex-direction: column
+
+.descriptionBtnMinus
+	&:last-child
+		margin-top: 20px

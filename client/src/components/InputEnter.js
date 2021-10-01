@@ -1,10 +1,10 @@
 import {useEffect, useState} from 'react';
 import {Button, InputGroup} from 'react-bootstrap';
+import {useHttp} from "../Hooks/http.hook";
 import ShowFullVariant from "./ShowFullVariant";
 import ShowPartlyVariant from "./ShowPartlyVariant";
-import Tags from './Tags'
+import Tags from './Tags';
 import AddRecipe from "./AddRecipe/AddRecipe";
-import {useHttp} from "../Hooks/http.hook";
 import Spinner from "./Spinner/Spinner";
 
 function InputEnter() {
@@ -12,7 +12,6 @@ function InputEnter() {
 	const [optionList, setOptionList] = useState([]);
 	const [dishFull, setDishFull] = useState([]);
 	const [dishPartly, setDishPartly] = useState([]);
-	const [products, setProducts] = useState([])
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
 	const {request, loading} = useHttp()
 	
@@ -21,18 +20,12 @@ function InputEnter() {
 	}
 //Todo submit-----------------------------------------------------
 	const submitHandler = async (e) => {
-		let objIdList = [];
-		let partialObjList = [];
 		e.preventDefault();
-		// axios.post('https://selection-recipe.herokuapp.com/api/search', inpIngredient).then(res => {
-		// 	const recipeData = res.data
-		// 	setDishPartly(recipeData.partial)
-		// 	setDishFull(recipeData.full);
-		// })
 		try {
 			const fetched = await request("https://selection-recipe.herokuapp.com/api/search", "POST", inpIngredient);
 			setDishPartly(fetched.partial)
 			setDishFull(fetched.full);
+			
 		} catch (e) {
 			throw e;
 		}
@@ -67,12 +60,12 @@ function InputEnter() {
 //TODO useEffects-----------------------------------------------
 	useEffect(async () => {
 		try {
-			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/", "GET", null);
+			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/",);
 			setOptionList(fetched);
 		} catch (e) {
 			throw e;
 		}
-	}, [setOptionList])
+	}, [])
 
 
 //Todo -----------------------JSX-------------------------------
@@ -120,11 +113,19 @@ function InputEnter() {
 			{
 				addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal} />
 			}
-			{
-				!(dishFull.length > 0 || dishPartly.length > 0 || inpIngredient.length > 0) &&
-				<h1 className="text-center mt-5">
-					Введите ингредиенты
-				</h1>
+			{/*{(inpIngredient.length === 0 && dishFull.length === 0 || dishPartly.length === 0) &&*/}
+			{/*<h1 className="text-center mt-5">*/}
+			{/*	Введите ингредиенты*/}
+			{/*</h1>*/}
+			{/*}*/}
+			{(inpIngredient.length > 0 || !dishFull.length > 0 || !dishPartly.length > 0) &&
+			<h2 className="text-center mt-5">
+				Введите ингредиенты
+			</h2>
+				// :
+				// <h1 className="text-center mt-5">
+				// 	Совпадений не найдено :(
+				// </h1>
 			}
 			{
 				loading ?
@@ -151,15 +152,15 @@ function InputEnter() {
 						</>
 					</>
 			}
-			{/*<div className="buttonAddPosition">*/}
-			{/*	<Button*/}
-			{/*		style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}*/}
-			{/*		type="submit"*/}
-			{/*		onClick={openAddRecipeModal}*/}
-			{/*	>*/}
-			{/*		Добавить рецепт*/}
-			{/*	</Button>*/}
-			{/*</div>*/}
+			<div className="buttonAddPosition">
+				<Button
+					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
+					type="submit"
+					onClick={openAddRecipeModal}
+				>
+					Добавить рецепт
+				</Button>
+			</div>
 			{
 				(dishPartly.length > 0 || dishFull.length > 0)
 				&&

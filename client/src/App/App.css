@@ -40,36 +40,41 @@ input::-ms-clear {
   display: none;
 }
 
-input {
+textarea::-ms-clear {
+  display: none;
+}
+
+input, textarea {
   font-size: 18px;
   font-weight: bold;
   font-family: monospace;
   background-color: transparent;
   color: #fff;
   border-color: rgba(237, 174, 1, 0.5) !important;
+  resize: none;
 }
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.4);
   text-overflow: ellipsis;
   background-color: transparent;
 }
-input::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   text-overflow: ellipsis;
   background-color: transparent;
 }
-input:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-overflow: ellipsis;
   background-color: transparent;
 }
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button, textarea::-webkit-inner-spin-button {
   -webkit-appearance: none;
   background-color: transparent;
 }
-input::-webkit-outer-spin-button {
+input::-webkit-outer-spin-button, textarea::-webkit-outer-spin-button {
   -webkit-appearance: none;
   background-color: transparent;
 }
-input[type=number] {
+input[type=number], textarea[type=number] {
   -moz-appearance: textfield;
   background-color: transparent;
 }
@@ -80,6 +85,20 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
   -webkit-transition-delay: 9999s;
+}
+
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+  -webkit-transition-delay: 9999s;
+}
+
+textarea:disabled {
+  background-color: rgba(82, 54, 52, 0.9) !important;
+  border: 1px solid rgba(82, 54, 52, 0.9) !important;
+  color: rgba(255, 255, 255, 0.3) !important;
 }
 
 input:active, input:focus {
@@ -160,7 +179,8 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 }
 
 .App {
-  width: 980px;
+  max-width: 980px;
+  width: 99%;
   height: 90vh;
   margin: 0 auto;
   display: flex;

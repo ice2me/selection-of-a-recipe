@@ -9,8 +9,11 @@ const schema = new Schema({
 			quantity: {type: String, required: true},
 		}
 	],
-	recipe: {type: String, required: true},
-
+	steps: [
+		{
+			recipeDescription: {type: String, required: true}
+		}
+	],
 });
 
 module.exports = model("Recipe", schema);
