@@ -226,6 +226,7 @@ function AddRecipe({closeAddRecipeModal}) {
 								type="button"
 								onClick={submitHandler}
 								title={'Отправить рецепт'}
+								className="sendButton"
 							>
 								Отправить &#10004;
 							</Button>
@@ -235,6 +236,7 @@ function AddRecipe({closeAddRecipeModal}) {
 								type="button"
 								disabled={true}
 								title={'Заполните все поля перед отправкой'}
+								className="sendButton"
 							>
 								Отправить &#10008;
 							</Button>

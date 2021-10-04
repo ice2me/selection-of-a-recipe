@@ -31,6 +31,7 @@ function AddBlockInput({
 				<label htmlFor="name-ingridient">название ингредиента
 					<input
 						type="text"
+						autoFocus
 						placeholder="название ингредиента"
 						autoComplete="false"
 						className="inputName"

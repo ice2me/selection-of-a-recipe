@@ -31,6 +31,7 @@ const AddBlokcTextarea = ({
 			<textarea
 				id={id}
 				name="recipeDescription"
+				autoFocus
 				cols="30"
 				rows="10"
 				className="textareaName"
@@ -43,6 +44,7 @@ const AddBlokcTextarea = ({
 				onKeyPress={e => {
 					if (e.key === 'Enter') {
 						addNewTextarea()
+						setDisabled(true)
 					}
 				}}
 				disabled={disabled}
