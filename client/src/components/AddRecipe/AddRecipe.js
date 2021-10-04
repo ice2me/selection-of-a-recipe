@@ -46,7 +46,7 @@ function AddRecipe({closeAddRecipeModal}) {
 			time: `${recipeTimeNumber} мин`,
 			photo: recipePhoto,
 			ingredients: ingredients.filter(ingr => ingr.name !== '' && delete (ingr.testId)),
-			steps: descriptions.filter(des => des.name !== '' && delete (des.testId))
+			steps: descriptions.filter(des => des.recipeDescription !== '' && delete (des.testId))
 		}
 		try {
 			await request("http://localhost:5000/api/recipe/dish", "POST", payload);

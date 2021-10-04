@@ -14,7 +14,6 @@ function AddBlockInput({
 	const [disabled, setDisabled] = useState(false)
 	const [ingredient, setIngredient] = useState({name: '', quantity: ''})
 	
-	
 	const onInputChangeHandler = (name, value) => {
 		setIngredient({...ingredient, ...{[name]: value}})
 	}

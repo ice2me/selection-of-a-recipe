@@ -14,7 +14,7 @@ const AddBlokcTextarea = ({
 	const [disabled, setDisabled] = useState(false)
 	
 	const onTextareaChangeHandler = (content, value) => {
-		setDescription({...description, ...{[content]: value}})
+		const ser = setDescription({...description, ...{[content]: value}})
 	}
 	
 	const disabledTextarea = () => {

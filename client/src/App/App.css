@@ -155,11 +155,11 @@ html:not(.touch-screen)::-webkit-scrollbar-track, html:not(.touch-screen) *::-we
 
 html:not(.touch-screen)::-webkit-scrollbar-thumb, html:not(.touch-screen) *::-webkit-scrollbar-thumb {
   background: #edae01;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 #root {
