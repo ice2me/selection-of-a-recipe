@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, InputGroup} from 'react-bootstrap';
 import {useHttp} from "../Hooks/http.hook";
 import ShowFullVariant from "./ShowFullVariant";
@@ -6,6 +6,7 @@ import ShowPartlyVariant from "./ShowPartlyVariant";
 import Tags from './Tags';
 import AddRecipe from "./AddRecipe/AddRecipe";
 import Spinner from "./Spinner/Spinner";
+import logo from "../imgaes/logo.png";
 
 function InputEnter() {
 	const [inpIngredient, setInpIngredient] = useState([])
@@ -25,7 +26,6 @@ function InputEnter() {
 			const fetched = await request("https://selection-recipe.herokuapp.com/api/search", "POST", inpIngredient);
 			setDishPartly(fetched.partial)
 			setDishFull(fetched.full);
-			
 		} catch (e) {
 			throw e;
 		}
@@ -117,19 +117,22 @@ function InputEnter() {
 			{
 				addRecipeModal && <AddRecipe closeAddRecipeModal={closeAddRecipeModal} />
 			}
-			{/*{(inpIngredient.length === 0 && dishFull.length === 0 || dishPartly.length === 0) &&*/}
-			{/*<h1 className="text-center mt-5">*/}
-			{/*	Введите ингредиенты*/}
-			{/*</h1>*/}
-			{/*}*/}
-			{(inpIngredient.length > 0 || !dishFull.length > 0 || !dishPartly.length > 0) &&
-			<h2 className="text-center mt-5">
-				Введите ингредиенты
-			</h2>
-				// :
-				// <h1 className="text-center mt-5">
-				// 	Совпадений не найдено :(
-				// </h1>
+			{
+				!(inpIngredient.length > 5 || dishFull.length > 0 || dishPartly.length > 0)
+					?
+					<div className="enterIngredients">
+						<h2 className="text-center mt-5">
+							Введите ингредиенты &#11014;
+						</h2>
+						<img
+							className="firstScreenLogo"
+							src={logo}
+							alt="logo"
+							style={{width: '235px', margin: '10px auto 0'}}
+						/>
+					</div>
+					:
+					<h2 className="text-center mt-5"></h2>
 			}
 			{
 				loading ?
@@ -156,15 +159,15 @@ function InputEnter() {
 						</>
 					</>
 			}
-			<div className="buttonAddPosition">
-				<Button
-					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
-					type="submit"
-					onClick={openAddRecipeModal}
-				>
-					Добавить рецепт
-				</Button>
-			</div>
+			{/*<div className="buttonAddPosition">*/}
+			{/*	<Button*/}
+			{/*		style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}*/}
+			{/*		type="submit"*/}
+			{/*		onClick={openAddRecipeModal}*/}
+			{/*	>*/}
+			{/*		Добавить рецепт*/}
+			{/*	</Button>*/}
+			{/*</div>*/}
 			{
 				(dishPartly.length > 0 || dishFull.length > 0)
 				&&

@@ -11,6 +11,7 @@ import Spinner from "../Spinner/Spinner";
 function AddRecipe({closeAddRecipeModal}) {
 	const [ingredients, setIngredients] = useState([])
 	const [recipeName, setRecipeName] = useState('')
+	const [recipeTimeNumber, setRecipeTimeNumber] = useState('')
 	const [descriptions, setDescriptions] = useState([])
 	const [recipePhoto, setRecipePhoto] = useState(null)
 	const {request, loading} = useHttp()
@@ -42,6 +43,7 @@ function AddRecipe({closeAddRecipeModal}) {
 		e.preventDefault()
 		const payload = {
 			name: recipeName,
+			time: `${recipeTimeNumber} мин`,
 			photo: recipePhoto,
 			ingredients: ingredients.filter(ingr => ingr.name !== '' && delete (ingr.testId)),
 			steps: descriptions.filter(des => des.name !== '' && delete (des.testId))
@@ -80,6 +82,15 @@ function AddRecipe({closeAddRecipeModal}) {
 		e.preventDefault();
 		setRecipeName(e.target.value);
 	}
+	const addTimeNumberValue = (e) => {
+		e.preventDefault();
+		setRecipeTimeNumber(e.target.value);
+	}
+	const addRecipePhoto = (e) => {
+		e.preventDefault()
+		const file = e.target.files[0]
+		resizeFile(file)
+	}
 	
 	const resizeFile = (file) => {
 		Resizer.imageFileResizer(
@@ -97,15 +108,10 @@ function AddRecipe({closeAddRecipeModal}) {
 			200
 		)
 	}
-	
-	
-	const addRecipePhoto = (e) => {
-		e.preventDefault()
-		const file = e.target.files[0]
-		resizeFile(file)
-	}
 
-//todo----------------------------------------------------
+
+//todo-------------useEffects---------------------------------------
+	
 	useEffect(() => {
 		document.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape') {
@@ -113,7 +119,7 @@ function AddRecipe({closeAddRecipeModal}) {
 			}
 		})
 	}, [closeAddRecipeModal])
-	
+//todo-------------Return---------------------------------------
 	return (
 		<div className="add-recipe">
 			<h1>
@@ -140,6 +146,20 @@ function AddRecipe({closeAddRecipeModal}) {
 							onChange={addNameValue}
 							title={'Введите название рецепта'}
 							autoFocus
+						/>
+					</label>
+					<label htmlFor="time-recipe"> Время приготовления: *
+						<input
+							type="number"
+							placeholder="Время приготовления:"
+							className="inputName"
+							name="time"
+							id="time-recipe"
+							value={recipeTimeNumber}
+							onChange={addTimeNumberValue}
+							title={'Время приготовления рецепта в минутах'}
+							min="5"
+							max="180"
 						/>
 					</label>
 					{!recipePhoto
@@ -219,7 +239,6 @@ function AddRecipe({closeAddRecipeModal}) {
 								Отправить &#10008;
 							</Button>
 					}
-				
 				</form>
 			}
 		</div>

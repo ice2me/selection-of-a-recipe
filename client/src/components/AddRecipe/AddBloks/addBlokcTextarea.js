@@ -57,7 +57,6 @@ const AddBlokcTextarea = ({
 						className="ml-3"
 						onClick={disabledTextarea}
 						disabled={(description === '')}
-						// disabled={true}
 					>
 						+
 					</Button>

@@ -17,8 +17,11 @@ function ShowPartlyVariant({
 					<div className="cardBlock">
 						<div className="blockName pr-3">
 							<h2 className="mb-3">
-								<span>{prod.name}</span>
+								<span>{prod.name.toUpperCase()}</span>
 							</h2>
+							<p className="mb-3">
+								<span> Время приготовления: {prod.time}</span>
+							</p>
 							<div className="imageShow">
 								<img
 									src={prod.photo}
@@ -48,7 +51,7 @@ function ShowPartlyVariant({
 												>
 													&#10004;
 												</p>
-												{item.name}
+												{item.name.toLowerCase()}
 											</li>
 											<li>{item.quantity}</li>
 										</ul>
@@ -57,21 +60,21 @@ function ShowPartlyVariant({
 							</ul>
 						</div>
 					</div>
-					<div className="textBlok">
-						<p>
-							{prod.recipe.split(' ').map((item, index) =>
-								inpValue.join('').toLowerCase() ===
-								item.toLowerCase() ? (
-									<i key={index}>{item} </i>
-								) : (
-									<b
-										key={index}
-										className="fw-light"
-									>{item} </b>
-								)
-							)}
-						</p>
-					</div>
+					<ul className="textBlok">
+						<h3>
+							Как приготовить {prod.name.toUpperCase()} &#11015;
+						</h3>
+						{prod.steps.map((step, index) => <li
+								key={step._id + index}
+								className="d-flex align-items-center justify-content-start"
+							>
+								<div>
+									<i>Шаг {index + 1}</i>
+									<p className="p-2">{step.recipeDescription}</p>
+								</div>
+							</li>
+						)}
+					</ul>
 					
 					<button
 						type="submit"

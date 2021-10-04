@@ -2,6 +2,7 @@ const {Schema, model} = require("mongoose");
 
 const schema = new Schema({
 	name: {type: String, required: true},
+	time: {type: String, required: false},
 	photo: {type: String, required: false},
 	ingredients: [
 		{

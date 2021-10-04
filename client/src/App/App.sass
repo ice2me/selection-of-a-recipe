@@ -181,7 +181,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 	h3
 		font-size: 22px
-		padding: 10px
 		@media screen and (max-width: 380px)
 			font-size: 18px
 
@@ -252,7 +251,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 		font-weight: 100 !important
 
 	i
-		color: red
+		color: #ea7a54
 
 .cardBlock
 	width: 100%
@@ -314,7 +313,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	width: 380px
 	height: 260px
 	border-radius: 4px
-	margin: 0 0 30px 0
+	margin: 20px 0 30px 0
 	@media screen and (max-width: 580px)
 		margin: 0 auto 30px
 	@media screen and (max-width: 380px)
@@ -373,18 +372,19 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 @keyframes slidein
 	0%
-		opacity: 1
-		transform: rotateZ(10deg)
+		transform: rotateY(10deg)
 	25%
-		opacity: 0.7
-		transform: rotateZ(90deg)
+		transform: rotateY(90deg)
 	50%
-		opacity: 0.5
-		transform: rotateZ(180deg)
+		transform: rotateY(180deg)
 	75%
-		opacity: 0.7
-		transform: rotateZ(270deg)
+		transform: rotateY(270deg)
 	100%
-		opacity: 1
-		transform: rotateZ(360deg)
+		transform: rotateY(360deg)
 
+.enterIngredients
+	height: 66%
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
