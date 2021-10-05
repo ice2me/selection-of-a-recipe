@@ -28,7 +28,7 @@ html, body
 	display: flex
 	align-items: center
 	justify-content: center
-	background-image: linear-gradient(to top right, rgb(84, 188, 139), rgba(84, 188, 139, 1), rgba(84, 188, 139, 0.99), rgba(84, 188, 139, 0.99), rgba(84, 188, 139, 0.99), rgba(84, 188, 139, 0.98), rgba(84, 188, 139, 0.98), rgba(84, 188, 139, 0.97), rgba(84, 188, 139, 0.97), rgba(84, 188, 139, 0.97), rgba(84, 188, 139, 0.96), rgba(84, 188, 139, 0.96))
+	background-color: #c1c1c1
 	outline: none
 	scroll-behavior: smooth
 
@@ -393,35 +393,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	@media screen and (max-width: 480px)
 		width: 40%
 
-.rotatinAnimationLeft
-	animation: 2.9s linear 1s infinite slidein
-
-@keyframes slidein
-	0%
-		transform: rotateZ(10deg)
-	25%
-		transform: rotateZ(90deg)
-	50%
-		transform: rotateZ(180deg)
-	75%
-		transform: rotateZ(270deg)
-	100%
-		transform: rotateZ(360deg)
-
-.rotatinAnimationRight
-	animation: 2.2s linear 1s infinite slideinR
-
-@keyframes slideinR
-	0%
-		transform: rotateZ(-10deg)
-	25%
-		transform: rotateZ(-90deg)
-	50%
-		transform: rotateZ(-180deg)
-	75%
-		transform: rotateZ(-270deg)
-	100%
-		transform: rotateZ(-360deg)
 
 .rotatinAnimationLoad
 	animation: 1s linear 1s infinite slideinL
