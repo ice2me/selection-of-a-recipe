@@ -22,7 +22,6 @@ function Tags({
 		setTags(tagsNew)
 	}
 	
-	
 	useEffect(() => {
 		if (optionList.length > 0) {
 			setSuggestions(
@@ -38,9 +37,8 @@ function Tags({
 	}, [tags])
 	
 	useEffect(() => {
-		(dishPartly || dishFull) < 1 && setTags([])
+		(dishPartly.length || dishFull.length) < 1 && setTags([])
 	}, [dishPartly, dishFull])
-	
 	return (
 		<>
 			<ReactTags

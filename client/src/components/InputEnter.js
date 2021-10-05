@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {Button, InputGroup} from 'react-bootstrap';
 import {useHttp} from "../Hooks/http.hook";
 import ShowFullVariant from "./ShowFullVariant";
@@ -6,7 +6,7 @@ import ShowPartlyVariant from "./ShowPartlyVariant";
 import Tags from './Tags';
 import AddRecipe from "./AddRecipe/AddRecipe";
 import Spinner from "./Spinner/Spinner";
-import logo from "../imgaes/logo.png";
+import logo from '../imgaes/logo.png'
 
 function InputEnter() {
 	const [inpIngredient, setInpIngredient] = useState([])
@@ -14,6 +14,7 @@ function InputEnter() {
 	const [dishFull, setDishFull] = useState([]);
 	const [dishPartly, setDishPartly] = useState([]);
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
+	
 	const {request, loading} = useHttp()
 	
 	const setInpIngredientList = (item) => {
@@ -31,7 +32,6 @@ function InputEnter() {
 		}
 	};
 
-
 //Todo Delete function -------------
 	const deleteRecipeHandlerFull = (e, id) => {
 		e.preventDefault();
@@ -47,8 +47,8 @@ function InputEnter() {
 		setDishFull([])
 		setDishPartly([]);
 	}
-	
-	//Todo open and close AddRecipe modal window ---------------------
+
+//Todo open and close AddRecipe modal window ---------------------
 	const openAddRecipeModal = (e) => {
 		e.preventDefault()
 		setAddRecipeModal(true)
@@ -57,20 +57,15 @@ function InputEnter() {
 		setAddRecipeModal(false)
 	}
 
-//TODO useEffects-----------------------------------------------
-	const tags = async () => {
+//TODO useMemo-----------------------------------------------
+	useMemo(async () => {
 		try {
-			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/",);
+			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/");
 			setOptionList(fetched);
 		} catch (e) {
 			throw e;
 		}
-	}
-	
-	useEffect(tags
-		, []
-	)
-
+	}, [])
 
 //Todo -----------------------JSX-------------------------------
 	return (
@@ -132,7 +127,9 @@ function InputEnter() {
 						/>
 					</div>
 					:
-					<h2 className="text-center mt-5"></h2>
+					<h2 className="text-center mt-5">
+					
+					</h2>
 			}
 			{
 				loading ?

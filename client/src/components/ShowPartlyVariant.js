@@ -15,7 +15,7 @@ function ShowPartlyVariant({
 					key={prod._id}
 				>
 					<div className="cardBlock">
-						<div className="blockName pr-3">
+						<div className="blockName">
 							<h2 className="mb-3">
 								<span>{prod.name.toUpperCase()}</span>
 							</h2>

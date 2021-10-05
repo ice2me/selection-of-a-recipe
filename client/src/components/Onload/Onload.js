@@ -10,7 +10,9 @@ export default function Onload() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				flexDirection: 'column'
+				flexDirection: 'column',
+				padding: '0 15px',
+				textAlign: 'center'
 			}}
 		>
 			<>
@@ -19,7 +21,7 @@ export default function Onload() {
 					className="firstScreenLogo"
 					src={logo}
 					alt="logo"
-					style={{width: '235px', margin: '10px auto 0'}}
+					style={{width: '235px', margin: '20px auto 0'}}
 				/>
 				<h3>посмотрите что из них можно приготовить &#10155;</h3>
 			</>

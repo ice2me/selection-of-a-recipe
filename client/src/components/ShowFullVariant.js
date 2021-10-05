@@ -15,7 +15,7 @@ function ShowFullVariant({
 					key={prod._id}
 				>
 					<div className="cardBlock">
-						<div className="blockName pr-5">
+						<div className="blockName">
 							<h2 className="mb-5">
 								<span>{prod.name.toUpperCase()}</span>
 							</h2>
