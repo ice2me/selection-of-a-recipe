@@ -21,20 +21,22 @@ function App() {
 								<img
 									src={logo}
 									alt="logo"
-									style={{width: '35px', margin: '0 10px 0 0'}}
+									style={{width: '40px', margin: '0 10px 0 0'}}
+									className="rotatinAnimationRight"
 								/>
 							</span>
-							Рецепты
+							Рецепты по ингредиентам
 							<span>
 								<img
 									src={logo}
 									alt="logo"
-									style={{width: '35px', margin: '0 0 0 10px'}}
+									style={{width: '40px', margin: '0 0 0 10px'}}
+									className="rotatinAnimationLeft"
 								/>
 							</span>
 						</h1>
 						<InputEnter />
-						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.4.9</p>
+						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.5</p>
 					</>
 			}
 		</div>

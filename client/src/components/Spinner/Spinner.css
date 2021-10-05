@@ -1,6 +1,6 @@
 .loader {
 	color: #fff;
-	font-size: 90px;
+	font-size: 190px;
 	text-indent: -9999em;
 	overflow: hidden;
 	width: 1em;
@@ -10,8 +10,8 @@
 	position: fixed;
 	-webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
 	animation: load6 1.7s infinite ease, round 1.7s infinite ease;
-	top: 40%;
-	left: 46%;
+	top: 36%;
+	left: 42%;
 	transform: translate(-50%, -50%);
 	z-index: 500;
 }

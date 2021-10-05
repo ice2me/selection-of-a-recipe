@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, InputGroup} from 'react-bootstrap';
 import {useHttp} from "../Hooks/http.hook";
 import ShowFullVariant from "./ShowFullVariant";
@@ -58,7 +58,7 @@ function InputEnter() {
 	}
 
 //TODO useMemo-----------------------------------------------
-	useMemo(async () => {
+	useEffect(async () => {
 		try {
 			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/");
 			setOptionList(fetched);
@@ -123,7 +123,6 @@ function InputEnter() {
 							className="firstScreenLogo"
 							src={logo}
 							alt="logo"
-							style={{width: '235px', margin: '10px auto 0'}}
 						/>
 					</div>
 					:

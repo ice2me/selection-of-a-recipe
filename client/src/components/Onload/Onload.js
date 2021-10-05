@@ -18,10 +18,10 @@ export default function Onload() {
 			<>
 				<h3>Выберите ингредиенты которые у вас есть и </h3>
 				<img
-					className="firstScreenLogo"
+					className="firstScreenLogo rotatinAnimationLoad"
 					src={logo}
 					alt="logo"
-					style={{width: '235px', margin: '20px auto 0'}}
+					// style={{width: '235px', margin: '20px auto 0'}}
 				/>
 				<h3>посмотрите что из них можно приготовить &#10155;</h3>
 			</>
