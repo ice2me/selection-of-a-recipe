@@ -22,6 +22,7 @@ nav, footer, header, aside {
 }
 
 html, body {
+  min-height: 600px;
   height: 100%;
   width: 100%;
   line-height: 1;
@@ -175,13 +176,14 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: 0 30px;
+  padding: 0 10px;
 }
 
 .App {
   max-width: 980px;
+  min-height: 500px;
   width: 99%;
-  height: 90vh;
+  height: 95vh;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -194,13 +196,20 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   position: relative;
   color: #fff;
   box-shadow: 0px -100px 65px -30px rgba(10, 10, 0, 0.3) inset;
+  z-index: 1;
 }
 .App h1 {
   font-size: 35px;
+  text-align: center;
+}
+@media screen and (max-width: 570px) {
+  .App h1 {
+    font-size: 20px;
+  }
 }
 @media screen and (max-width: 380px) {
   .App h1 {
-    font-size: 25px;
+    font-size: 15px;
   }
 }
 .App h2 {
@@ -418,6 +427,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 .input-group {
   flex-wrap: nowrap !important;
+  z-index: 50;
 }
 
 @keyframes fall {
@@ -478,6 +488,11 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   margin: 30px;
   transform: rotateZ(0deg);
   opacity: 1;
+}
+@media screen and (max-width: 480px) {
+  .firstScreenLogo {
+    width: 40%;
+  }
 }
 
 .rotatinAnimationLeft {
@@ -544,7 +559,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   }
 }
 .enterIngredients {
-  height: 66%;
   display: flex;
   flex-direction: column;
   align-items: center;

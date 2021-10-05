@@ -5,6 +5,7 @@
 	font-size: 1em;
 	line-height: 1.2;
 	cursor: text;
+	z-index: 50;
 }
 
 .react-tags__search-input {
@@ -96,6 +97,12 @@
 	width: 100%;
 	margin: 0 1px;
 	list-style: none;
+}
+
+@media screen and (max-width: 480px) {
+	.react-tags__suggestions ul {
+		background-color: #fff !important;
+	}
 }
 
 .react-tags__suggestions li {
