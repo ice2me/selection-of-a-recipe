@@ -3,6 +3,7 @@ import './App.css';
 import InputEnter from "../components/InputEnter";
 import Onload from "../components/Onload/Onload";
 
+
 function App() {
 	const [screenSaver, setScreenSaver] = useState(true)
 	setTimeout(() => {

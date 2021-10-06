@@ -46,7 +46,9 @@ function InputEnter() {
 	
 	const cleanDish = () => {
 		setDishFull([])
-		setDishPartly([]);
+		setDishPartly([])
+		setTags([])
+		setPushButton(false)
 	}
 
 //Todo open and close AddRecipe modal window ---------------------
@@ -69,10 +71,10 @@ function InputEnter() {
 		}
 	}, [request])
 	
-	const rebutTags = () => {
-		setTags([])
-		setPushButton(false)
-	}
+	// const rebutTags = () => {
+	// 	setTags([])
+	// 	setPushButton(false)
+	// }
 
 //Todo -----------------------JSX-------------------------------
 	return (
@@ -140,7 +142,7 @@ function InputEnter() {
 								<Button
 									style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 									type="submit"
-									onClick={rebutTags}
+									onClick={cleanDish}
 								>
 									Повторить &#8617;
 								</Button>
