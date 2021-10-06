@@ -112,7 +112,7 @@
 	align-items: center;
 	justify-content: flex-start;
 	padding: 5px 8px;
-	background: rgba(33, 78, 81, 1);
+	background: rgba(15, 38, 56, 0.9);
 	border: 1px solid transparent;
 	border-radius: 4px;
 	box-shadow: 0 1px 3px rgb(237, 174, 0.5);
@@ -128,9 +128,9 @@
 	cursor: pointer;
 	height: 100%;
 	border: 1px solid #edae01;
-	background-color: #6c757d;
+	background-color: #edae01;
 }
 
 .react-tags__suggestions li.is-active {
-	background-color: #6c757d
+	background-color: #edae01
 }

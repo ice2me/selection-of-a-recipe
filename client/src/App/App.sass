@@ -153,6 +153,12 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	background-repeat: no-repeat
 	background-position: 580px 550px
 
+	p
+		margin-left: 20px
+
+		span
+			margin-left: 20px
+
 .App
 	max-width: 980px
 	min-height: 500px
@@ -256,7 +262,8 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	justify-content: space-between
 	margin: 30px 0
 	//box-shadow: 0 2px 20px -4px rgba(237, 174, 1, 1)
-	border: 1px solid rgba(237, 174, 1, 0.5)
+	background-color: rgba(15, 38, 56, 0.7)
+	border: 1px solid rgba(21, 51, 76, 0.5)
 	transition: all .5s ease
 	animation: fall ease .3s forwards
 
@@ -296,6 +303,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	display: flex
 	animation: slideText 3s infinite ease
 	overflow-x: hidden
+	margin-left: 20px
 	@media screen and (max-width: 880px)
 		text-align: center
 

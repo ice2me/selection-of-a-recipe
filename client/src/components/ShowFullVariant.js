@@ -8,7 +8,7 @@ function ShowFullVariant({
 	return (
 		<>
 			<h1 className="prodName">Полное совпадение </h1>
-			<p> Рецептов найдено: {productReciept.length}</p>
+			<p><span>Рецептов найдено: {productReciept.length}</span></p>
 			<p className="pt-1">
 				<span>ингредиенты в большенстве блюд рассчитаны на 4 порчии</span>
 			</p>

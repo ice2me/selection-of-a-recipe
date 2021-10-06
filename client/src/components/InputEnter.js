@@ -70,11 +70,6 @@ function InputEnter() {
 			throw e;
 		}
 	}, [request])
-	
-	// const rebutTags = () => {
-	// 	setTags([])
-	// 	setPushButton(false)
-	// }
 
 //Todo -----------------------JSX-------------------------------
 	return (
