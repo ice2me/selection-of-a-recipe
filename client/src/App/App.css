@@ -428,6 +428,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 .input-group {
   flex-wrap: nowrap !important;
   z-index: 50;
+  padding: 0 5%;
 }
 
 @keyframes fall {

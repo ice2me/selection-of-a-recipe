@@ -19,7 +19,7 @@ function App() {
 							Рецепты по ингредиентам
 						</h1>
 						<InputEnter />
-						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.5</p>
+						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.5.4</p>
 					</>
 			}
 		</div>
