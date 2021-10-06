@@ -9,6 +9,9 @@ function ShowPartlyVariant({
 		<>
 			<h1 className="prodName">Частичное совпадение </h1>
 			<p> Рецептов найдено: {productReciept.length}</p>
+			<p className="pt-1">
+				<span>ингредиенты в большенстве блюд рассчитаны на 4 порчии</span>
+			</p>
 			{productReciept.map((prod) => (
 				<div
 					className="cardHover flex-column"

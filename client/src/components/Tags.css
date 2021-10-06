@@ -128,9 +128,9 @@
 	cursor: pointer;
 	height: 100%;
 	border: 1px solid #edae01;
-	background-color: rgba(237, 174, 1, 0.3);
+	background-color: #6c757d;
 }
 
 .react-tags__suggestions li.is-active {
-	background-color: rgba(250, 174, 1, 0.3)
+	background-color: #6c757d
 }
