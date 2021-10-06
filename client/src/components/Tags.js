@@ -23,7 +23,7 @@ function Tags({
 	}
 	
 	useEffect(() => {
-		if (optionList.length > 0) {
+		if (optionList && optionList.length > 0) {
 			setSuggestions(
 				optionList.map(item => {
 					return {id: Date.now(), name: item}

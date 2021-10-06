@@ -57,22 +57,23 @@ function InputEnter() {
 		setAddRecipeModal(false)
 	}
 
-//TODO useMemo-----------------------------------------------
-	useEffect(async () => {
+//TODO useEffect-----------------------------------------------
+	useEffect(() => {
 		try {
-			const fetched = await request("https://selection-recipe.herokuapp.com/api/tags/");
-			setOptionList(fetched);
+			request("https://selection-recipe.herokuapp.com/api/tags/").then(res => {
+				setOptionList(res)
+			})
 		} catch (e) {
 			throw e;
 		}
-	}, [])
-
+	}, [request])
 //Todo -----------------------JSX-------------------------------
 	return (
 		<div className="form">
 			<InputGroup>
 				<Tags
 					className="inputGroup position-relative"
+					// optionList={memoTags}
 					optionList={optionList}
 					setInpIngredientList={setInpIngredientList}
 					submitHandler={submitHandler}
