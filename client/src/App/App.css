@@ -165,11 +165,10 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 #root {
   width: 100%;
-}
-@media screen and (max-width: 680px) {
-  #root {
-    padding: 0 15px;
-  }
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form {
@@ -190,7 +189,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 
 .App {
   max-width: 980px;
-  min-height: 500px;
   width: 99%;
   height: 95vh;
   margin: 0 auto;
@@ -199,7 +197,6 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   flex-direction: column;
   overflow: hidden;
   padding: 25px 0;
-  border-radius: 4px;
   cursor: default;
   position: relative;
   color: #fff;
@@ -209,6 +206,12 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
   background-position-y: 0;
   background-position-x: 0;
   animation: dotAnimation 15s linear infinite running;
+}
+@media screen and (max-width: 980px) {
+  .App {
+    width: 100%;
+    height: 100%;
+  }
 }
 .App h1 {
   font-size: 35px;
