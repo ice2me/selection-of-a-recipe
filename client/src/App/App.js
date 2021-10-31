@@ -1,26 +1,32 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import './App.css';
 import InputEnter from "../components/InputEnter";
 import Onload from "../components/Onload/Onload";
-
+import { useHttp } from '../Hooks/http.hook';
 
 function App() {
-	const [screenSaver, setScreenSaver] = useState(true)
-	setTimeout(() => {
-		setScreenSaver(false)
-	}, 2000)
+	const [recipeLength, setRecipeLength] = useState([]);
+	const {request, loading} = useHttp()
+
+	const allRecipes = useMemo(() => {
+		try {
+			request("https://selection-recipe.herokuapp.com/api/recipe/dish").then(res => {
+				setRecipeLength(res.length)
+				return 
+			})
+		} catch (e) {
+			throw e;
+		}
+	}, [request])
 	return (
-		<div className="App">
+		<div className="App" onLoad={allRecipes}>
 			{
-				screenSaver ?
-					<Onload />
-					:
+				loading ? <Onload /> :
 					<>
-						<h1>
-							Рецепты по ингредиентам
-						</h1>
+							<h1>Рецепты по ингредиентам</h1>
+							<p>(в базе {recipeLength} рецепта)</p>
 						<InputEnter />
-						<p className="pt-3 copyright">copyright PepperNode © 2021 version 0.5.5</p>
+						<p className="pt-3 copyright">copyright Peppernode © 2021 version 4.4.10</p>
 					</>
 			}
 		</div>

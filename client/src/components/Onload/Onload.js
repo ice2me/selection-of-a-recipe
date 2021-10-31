@@ -33,9 +33,9 @@ export default function Onload() {
 						<path
 							d="M3.47861 24.5679L19.2775 10.6097L26.8577 18.5743L44.3318 3.54004L43.7854 12.5346L44.3318 3.54004H34.3447"
 							stroke="white"
-							stroke-width="5.36316"
-							stroke-linecap="round"
-							stroke-linejoin="round"
+							strokeWidth="5.36316"
+							strokeLinecap="round"
+							strokeLinejoin="round"
 						/>
 					</svg>
 				

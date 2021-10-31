@@ -10,7 +10,7 @@ function ShowPartlyVariant({
 			<h1 className="prodName">Частичное совпадение </h1>
 			<p><span>Рецептов найдено: {productReciept.length}</span></p>
 			<p className="pt-1">
-				<span>ингредиенты в большенстве блюд рассчитаны на 4 порчии</span>
+				<span>ингредиенты в большенстве блюд рассчитаны на 4 порции</span>
 			</p>
 			{productReciept.map((prod) => (
 				<div
@@ -33,7 +33,7 @@ function ShowPartlyVariant({
 							</div>
 						</div>
 						<div className="blockIng">
-							<h3>Ингридиенты</h3>
+							<h3>Ингредиенты</h3>
 							<ul>
 								{prod.ingredients.map((item, index) => (
 									<li key={index + item.name}>

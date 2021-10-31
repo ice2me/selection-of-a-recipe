@@ -11,6 +11,7 @@ import logo from '../imgaes/logo.png'
 function InputEnter() {
 	const [inpIngredient, setInpIngredient] = useState([])
 	const [optionList, setOptionList] = useState([]);
+	
 	const [dishFull, setDishFull] = useState([]);
 	const [dishPartly, setDishPartly] = useState([]);
 	const [addRecipeModal, setAddRecipeModal] = useState(false)
@@ -21,6 +22,7 @@ function InputEnter() {
 	const setInpIngredientList = (item) => {
 		setInpIngredient(item)
 	}
+
 //Todo submit-----------------------------------------------------
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -70,6 +72,8 @@ function InputEnter() {
 			throw e;
 		}
 	}, [request])
+
+
 
 //Todo -----------------------JSX-------------------------------
 	return (
@@ -195,15 +199,15 @@ function InputEnter() {
 						</>
 					</>
 			}
-			{/*<div className="buttonAddPosition">*/}
-			{/*	<Button*/}
-			{/*		style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}*/}
-			{/*		type="submit"*/}
-			{/*		onClick={openAddRecipeModal}*/}
-			{/*	>*/}
-			{/*		Добавить рецепт*/}
-			{/*	</Button>*/}
-			{/*</div>*/}
+			<div className="buttonAddPosition">
+				{/* <Button
+					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
+					type="submit"
+					onClick={openAddRecipeModal}
+				>
+					Добавить рецепт
+				</Button> */}
+			</div>
 			{
 				(dishPartly.length > 0 || dishFull.length > 0)
 				&&

@@ -49,7 +49,7 @@ function Tags({
 				onDelete={onDelete}
 				onAddition={onAddition}
 				minQueryLength={1}
-				placeholderText="Введите ингредиенты"
+				placeholderText="Добавить ингредиенты"
 			/>
 		</>
 	);
