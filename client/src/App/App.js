@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import './App.css';
 import InputEnter from "../components/InputEnter";
 import Onload from "../components/Onload/Onload";
@@ -11,15 +11,15 @@ function App() {
 	const allRecipes = useMemo(() => {
 		try {
 			request("https://selection-recipe.herokuapp.com/api/recipe/dish").then(res => {
+				console.log(res.length)
 				setRecipeLength(res.length)
-				return 
 			})
 		} catch (e) {
 			throw e;
 		}
 	}, [request])
 	return (
-		<div className="App" onLoad={allRecipes}>
+		<div className="App" onLoadStart={allRecipes}>
 			{
 				loading ? <Onload /> :
 					<>
