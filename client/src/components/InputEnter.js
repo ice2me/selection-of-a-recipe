@@ -199,15 +199,15 @@ function InputEnter() {
 						</>
 					</>
 			}
-			<div className="buttonAddPosition">
-				{/* <Button
+			{/* <div className="buttonAddPosition">
+				<Button
 					style={{backgroundColor: 'rgba(237,174,1, 1)', border: 'none'}}
 					type="submit"
 					onClick={openAddRecipeModal}
 				>
 					Добавить рецепт
-				</Button> */}
-			</div>
+				</Button>
+			</div> */}
 			{
 				(dishPartly.length > 0 || dishFull.length > 0)
 				&&

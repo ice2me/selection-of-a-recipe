@@ -24,7 +24,7 @@ function App() {
 				loading ? <Onload /> :
 					<>
 							<h1>Рецепты по ингредиентам</h1>
-							<p>(в базе {recipeLength} рецепта)</p>
+							<p style={{paddingBottom: 10}}>(в базе {recipeLength} рецепта)</p>
 						<InputEnter />
 						<p className="pt-3 copyright">copyright Peppernode © 2021 version 4.4.10</p>
 					</>
