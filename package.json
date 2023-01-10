@@ -34,6 +34,7 @@
 		"react-file-base64": "^1.0.3",
 		"sass": "^1.42.0"
 	},
+	"stack": "heroku-22",
 	"engines": {
 		"node": "14.17.5"
 	},
